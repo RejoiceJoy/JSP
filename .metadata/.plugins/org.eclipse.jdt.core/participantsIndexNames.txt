@@ -7,3 +7,5 @@ C:\workspace1205\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\611778587
 \test_web\src\main\java
 C:\workspace1205\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2442236596.index
 \JSPBook_02\src\main\java
+C:\workspace1205\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3575866723.index
+\JSPBook_03\src\main\java
