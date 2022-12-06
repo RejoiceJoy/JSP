@@ -8,6 +8,6 @@
 	<%
 		String name = request.getParameter("name");
 	%>
-	<p>	이 름 : <%=java.net.URLDecoder.decode(name)%>
+	<p>	이 름 : <%=java.net.URLDecoder.decode(name)%> 
 </body>
 </html>
