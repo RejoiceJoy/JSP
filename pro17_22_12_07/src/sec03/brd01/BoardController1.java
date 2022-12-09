@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 //URL 요청 처리는 2단계로 이루어짐
 //사용자 브라우저가 URL /http://localhost:8080/pro17/board/으로 시작
 
-//@WebServlet("/board/*")
+@WebServlet("/board/*")
 public class BoardController1 extends HttpServlet {
 	//과거 코드 여러개의 웹서버에서 중복처리
 	private static final long serialVersionUID = 1L;

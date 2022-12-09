@@ -32,7 +32,9 @@
 		 url = "jdbc:oracle:thin:@localhost:1521/xepdb1"
 		 username = "scott"
 	     password = "tiger"
-	     maxActive="50"
+	     maxActive="50"		
 	     maxWait="-1"          
           />
+          <!-- 50명 접속할 수 있음 -->
+          <!-- connect풀 쓰는 이유 -->
 </Context>
