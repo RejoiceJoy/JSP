@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+    <html>
+<head>
+      <title>Google Chart with jsp Mysql Json</title>
+      <meta http-equiv="Content-Type" 
+      content="text/html; charset=UTF-8">
+      <script type="text/javascript" 
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script type="text/javascript" 
+      src="https://www.google.com/jsapi"></script>
+</head>
+
+<body>
+
+ 
+ 
+ <script type="text/javascript">
+ 	//db 데이터 저장 객체
+     var queryObject="";
+ 	//db 데이터 저장 객체 객수 저장
+     var queryObjectLen="";
+    
+      $.ajax({
+           type : 'POST',
+           url : 'getdata.jsp',
+           dataType:'json',
+           success : function(data) {
+                    queryObject = eval('(' + JSON.stringify(data) + ')');
+                    queryObjectLen = queryObject.empdetails.length;
+                },
+          error : function(xhr, type) {
+             alert('server error occoured')
+                }
+       });//ajax 데이터 로드 끝
+      
+      //구글 그래프 그르기 시작
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+           var data = new google.visualization.DataTable();
+           data.addColumn('string', 'name');
+           data.addColumn('number', 'empid');
+      
+           for(var i=0 ; i < queryObjectLen ; i++ ) {
+                 var name = queryObject.empdetails[i].name;
+                 var empid = queryObject.empdetails[i].empid;
+                 data.addRows([
+                     [ name , parseInt(empid) ]
+                    ] );
+           }
+           
+   			var options = {title: 'Employee Information',};
+  
+    		var chart = 
+  				new google.visualization.PieChart(document.getElementById('chart_div'));
+
+ 			chart.draw(data,options);
+ 		}//drawChart() end 그래프 그리기 끝
+
+ </script>
+ 
+ <div id="chart_div"></div>
+ </body>
+ </html>

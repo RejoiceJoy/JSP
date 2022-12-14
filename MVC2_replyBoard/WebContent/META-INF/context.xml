@@ -5,6 +5,6 @@
            type="javax.sql.DataSource"
            driverClassName="oracle.jdbc.OracleDriver"
            url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1"
-           username="scott" password="tiger" maxTotal="20"
+           username="scott" password="tiger" maxTotal="-1"	
            maxIdle="10" maxWaitMillis="-1"/>
 </Context>
