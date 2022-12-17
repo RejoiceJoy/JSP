@@ -22,7 +22,7 @@
 					var jsoninfo = JSON.parse(data);	//서블릿에서 가져온 데이터를 받음
 					var bookinfo = "책 정보<br>";
 					bookinfo += "================<br>";
-					for(var i in jasoninfo.books) {
+					for(var i in jsoninfo.books) {
 						bookinfo += "제목: " + jsoninfo.books[i].book_title + "<br>";
 						bookinfo += "작가: " + jsoninfo.books[i].author + "<br>";
 						bookinfo += "출판사: " + jsoninfo.books[i].publishing + "<br>";
@@ -31,6 +31,8 @@
 						bookinfo += "모양: " + jsoninfo.books[i].shape + "<br>";
 						bookinfo += "isbn: " + jsoninfo.books[i].isbn + "<br><br><br>";
 					} //end for
+					
+
 					$("#output").html(bookinfo);
 				}, //end success function
 				error: function (data, textStatus) {

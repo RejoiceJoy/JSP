@@ -73,7 +73,6 @@ public class BookControllerJson extends HttpServlet {
 		String jsoninfo = totalObject.toJSONString();//JSONObject를 문자열로 변환
 		System.out.print(jsoninfo);
 		writer.print(jsoninfo);						//JSON 데이터를 브라우저로 전송
-		
-		writer.print("안녕하세요! 서버입니다.");
+
 	}//end doHandle
 }//end class
