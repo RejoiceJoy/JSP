@@ -153,10 +153,13 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\project2" path="/project2" reloadable="true" source="org.eclipse.jst.jee.server:project2">
+      <Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\_mainpage" path="/_mainpage" reloadable="true" source="org.eclipse.jst.jee.server:_mainpage"/><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\_librarysearch" path="/_librarysearch" reloadable="true" source="org.eclipse.jst.jee.server:_librarysearch">
  <WatchedResource>WEB-INF/web.xml</WatchedResource>
  <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="-1" maxWaitMillis="-1" name="jdbc/myoracle" password="nal" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1" username="nal"/>
-</Context></Host>
+</Context><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MVC2_replyBoard" path="/MVC2_replyBoard" reloadable="true" source="org.eclipse.jst.jee.server:MVC2_replyBoard">
+ <WatchedResource>WEB-INF/web.xml</WatchedResource>
+ <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="-1" maxWaitMillis="-1" name="jdbc/myoracle" password="tiger" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1" username="scott"/>
+</Context><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\2nd_project_nal" path="/2nd_project_nal" reloadable="true" source="org.eclipse.jst.jee.server:2nd_project_nal"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ID Selector practice 2</title>
+	<script src = "http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type = "text/javascript">
+		function addHtml() {
+            $("#article").html('안녕하세요' + '<br>');
+		}
+	</script>
+
+</head>
+<body>
+    <div>
+        <h1 id = "article"></h1>
+        <h2> 안녕? </h2>
+    </div>
+    <input type="button" value="추가하기" onclick="addHtml()" >
+</body>
+</html>

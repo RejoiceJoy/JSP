@@ -11,7 +11,7 @@ public class DBManager {
 			//Context.xml에서 디비정보 가져오기
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
+			DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
 			//디비연결
 			conn = ds.getConnection();
 		} catch (Exception e) {

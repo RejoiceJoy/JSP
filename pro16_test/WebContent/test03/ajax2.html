@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax practice 1</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type = "text/javascript">
+		function fn_process() {
+			$.ajax({
+				type:"post",
+				async:false,
+				url:"http://localhost:8080/pro16_test/ajaxTest2",
+				dataType:"xml",
+				// data: {param:"hello, jquery"},
+				success:function (info, textStatus) {
+					$(info).find("book").each(function(){
+						var title = $(this).find("title").text();
+						var writer = $(this).find("writer").text();
+						var image = $(this).find("image").text();
+						$('#bookInfo').append(
+							"<p>" + title + "</p>" +	
+							"<p>" + writer + "</p>" +	
+							"<img src = "+image + " />"	
+						);		
+					});									
+				},
+				error:function(data, textStatus) {
+					alert("error occured!");
+				},
+				complete:function(data, textStatus) {
+					alert("mission completed!");					
+				}							
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id = "bookInfo"></div>
+	<input type =button value = "Book Info" onClick = "fn_process()">
+	
+
+</body>
+</html>

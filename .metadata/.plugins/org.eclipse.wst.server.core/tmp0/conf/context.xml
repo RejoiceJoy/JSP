@@ -30,8 +30,8 @@
           type="javax.sql.DataSource"
           driverClassName = "oracle.jdbc.driver.OracleDriver"
 		 url = "jdbc:oracle:thin:@localhost:1521/xepdb1"
-		 username = "scott"
-	     password = "tiger"
+		 username = "nal"
+	     password = "nal"
 	     maxActive="50"		
 	     maxWait="-1"          
           />

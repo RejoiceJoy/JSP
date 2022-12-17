@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax practice 1</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type = "text/javascript">
+		function fn_process() {
+			var _id=$("#t_id").val();
+			if(_id==''){
+				alert("IDㄹㄹ 입력하세요");
+				return;
+			}
+			$.ajax({
+				type:"post",
+				async:true,
+				url:"http://localhost:8080/pro16_test/mem",
+				dataType:"text",
+				data: {id: _id},
+				success:function (data, textStatus) {
+					if(data=='usable'){
+						$('#message').text("사용할 수 있느 ID");
+						$('#btnDuplicate').prop("disabled", true);
+					} else {
+						$('#message').text("사용할 수 없는 ID");
+					}								
+				},
+				error:function(data, textStatus) {
+					alert("error occured!");
+				},
+				complete:function(data, textStatus) {
+					alert("mission completed!");					
+				}							
+			});	//end ajax
+		}
+	</script>
+</head>
+<body>
+	<input  type="text" id="t_id"/>
+	<input type="button" id="btnDuplicate" value="ID 중복체크하기" onClick="fn_process()" /><br><br>
+	<div id="message"></div>
+
+</body>
+</html>
