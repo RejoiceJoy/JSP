@@ -12,7 +12,7 @@
 <%
 	BookDAO bookDAO = BookDAO.getInstance();
 	bookDAO.showbookinfo();
-	
+
 %>
 <%= bookDAO.showBookTitle() %>
 

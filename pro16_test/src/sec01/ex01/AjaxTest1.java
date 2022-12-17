@@ -41,7 +41,7 @@ public class AjaxTest1 extends HttpServlet {
 		System.out.println("param = " + param);
 		
 		PrintWriter writer = response.getWriter();
-		writer.print("Hello! It's Server");
+		writer.print("안녕하세요! 서버입니다.");
 
 	}//end dodoHandle
 }//end class

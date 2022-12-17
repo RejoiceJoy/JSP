@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
 <!-- 크롬에서 실행 -->
+
+
 <head>
   <title>JSON 테스트</title>
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>

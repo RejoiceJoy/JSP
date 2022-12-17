@@ -27,17 +27,17 @@
 				alert("로그인 해주세요.");
 				return false;
 			}
-	
+
 			location.href = "./BoardWriteForm.do?id=<%=sessionId%>"
 		}
 		
 		function search() {	
 			
-			var itmes = document.querySelector("#items");
+/* 			var itmes = document.querySelector("#items");
 			itmes.setAttribute("itmes", itmes);
 			var text = document.querySelector("#text");
 			text.setAttribute("text", text);
-			
+			 */
 			var uri = "./BoardListAction.do?";
 			
 			uri += "itmes";

@@ -16,17 +16,17 @@
 					$('#message').append(data);					
 				},
 				error:function(data, textStatus) {
-					alert("error occured!");
+					alert("에러가 발생했습니다!");
 				},
 				complete:function(data, textStatus) {
-					alert("mission completed!");					
+					alert("작업 완료했습니다!");					
 				}							
 			});
 		}
 	</script>
 </head>
 <body>
-	<input type = "button" value = "Send" onClick = "fn_process()"><br><br>
+	<input type = "button" value = "전송하기" onClick = "fn_process()"><br><br>
 	<div id = "message"></div>
 
 </body>
