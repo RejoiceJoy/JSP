@@ -24,7 +24,7 @@ import util.DBManager;
  * Servlet implementation class BookControllerJson
  */
 @WebServlet("/search")
-public class BookControllerJson extends HttpServlet {
+public class testServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -79,14 +79,21 @@ public class BookControllerJson extends HttpServlet {
 		
 		totalObject.put("books", bookinfoArray);	//책 정보 저장한 배열을 books로 totalObject에 저장
 		
-		String jsoninfo = totalObject.toJSONString();//JSONObject를 문자열로 변환
-		System.out.print(jsoninfo);
-		writer.print(jsoninfo);						//JSON 데이터를 브라우저로 전송
+		//String jsoninfo = totalObject.toJSONString();//JSONObject를 문자열로 변환
+		//System.out.print(jsoninfo);
+		//writer.print(jsoninfo);						//JSON 데이터를 브라우저로 전송
 		
 		System.out.println();
 
-		String keyword = (String)request.getParameter("keyword");		
+		String keyword = (String)request.getParameter("keyword");
 		System.out.println(keyword);
+		
+		String jsoninfo = showBookinfo(keyword).toJSONString();
+		System.out.println(jsoninfo);
+		writer.print(jsoninfo);
+		
+		
+		
 		
 	}//end doHandle
 	
@@ -113,6 +120,7 @@ public class BookControllerJson extends HttpServlet {
 	}
 */	
 	
+/*	
 	public JSONObject showBookinfo(String keyword) {
 		BookDAO dao = BookDAO.getInstance();
 		JSONObject jsonobj = new JSONObject();
@@ -120,8 +128,7 @@ public class BookControllerJson extends HttpServlet {
 		JSONObject bookinfo = new JSONObject();
 		
 		BookVO vo = dao.searchBook(keyword);	//searchBook 메서드 호출:BookVO 객체받아
-		
-		
+			
 		bookinfo.put("book_title", vo.getBook_title());
 		bookinfo.put("author", vo.getAuthor());
 		bookinfo.put("publishing", vo.getPublishing());
@@ -133,9 +140,37 @@ public class BookControllerJson extends HttpServlet {
 		bookinfoArray.add(bookinfo);
 		jsonobj.put("books", bookinfoArray);		
 		return jsonobj;
-	}
+	}//end showBookinfo
+*/	
+	public JSONObject showBookinfo(String keyword) {
+		//BookDAO dao = BookDAO.getInstance();
+		JSONObject jsonobj = new JSONObject();
+		
+		try {
+			JSONArray bookinfoArray = new JSONArray();
+			ArrayList<BookVO> infoArr = dao.searchBook(keyword);	//searchBook 메서드 호출:ArrayList 받아옴
+			
+			for (int i = 0; i < infoArr.size(); i++) {
+				JSONObject bookinfo = new JSONObject();
+				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				
+				bookinfoArray.add(bookinfo);						
+			}
+			jsonobj.put("books", bookinfoArray);	
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}												
+		return jsonobj;
+	}//end showBookinfo	
 	
-	
+	//BookDAO ArrayList반환 메서드
 	public ArrayList<BookVO> searchBook(String keyword) {
 		Connection conn = null;
 		String sql = "SELECT * FROM nal.book where book_title like '%" + keyword +"%'";

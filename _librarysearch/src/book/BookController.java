@@ -65,7 +65,7 @@ public class BookController extends HttpServlet {
 		BookDAO dao = BookDAO.getInstance();		//bookDAO 객체
 		List<BookVO> bookinfo = new ArrayList<BookVO>();	//book info 담을 List
 		
-		bookinfo = dao.searchBook(keyword);
+//		bookinfo = dao.searchBook(keyword);
 		
 		bookcount = bookinfo.size();
 		

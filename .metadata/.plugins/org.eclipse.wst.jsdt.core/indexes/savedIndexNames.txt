@@ -1,17 +1,6 @@
-INDEX VERSION 1.4+C:\workspace1205\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2593252549.index
-259929277.index
-3083963566.index
-1544866823.index
-3087466433.index
-1416505195.index
-2326142290.index
-2814087567.index
-1866044108.index
-242822311.index
-1241889543.index
-2519985773.index
-259125314.index
-1361964003.index
-4145138764.index
-2066367948.index
+INDEX VERSION 1.4+/Users/joy/GitHub/JSP/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2014847513.index
+3368278369.index
+2139077863.index
+48470568.index
+882383728.index
