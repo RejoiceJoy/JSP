@@ -11,7 +11,7 @@
 				dataType:"text",
 				async:false,
 				url:"http://localhost:8080/pro16_test/ajaxTest1",
-				data: {param:"hello, jquery"},
+				data: {parameter:"hello, jquery"},
 				success:function (data, textStatus) {
 					$('#message').append(data);					
 				},
@@ -20,7 +20,7 @@
 				},
 				complete:function(data, textStatus) {
 					alert("작업 완료했습니다!");					
-				}							
+				}					
 			});
 		}
 	</script>

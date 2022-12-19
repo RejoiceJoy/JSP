@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import book.BookVO;
 import util.DBManager;
 
@@ -19,11 +22,10 @@ public class BookDAO {
 	  public static BookDAO getInstance() {
 	    return instance;
 	  }
-	
-	
-	
+/*	원본 showbookinfo
 	//select
 	public void showbookinfo() {
+		Connection conn = null;
 		String sql = "select * from nal.book";
 		try {
 			conn= DBManager.getConnection();
@@ -48,8 +50,80 @@ public class BookDAO {
 			e.printStackTrace();
 		}//end try
 	}//end showbookinfo()
+*/
+	
+/* 1차 수정 showBookinfo
+	public JSONObject showBookinfo(String keyword) {
+		JSONObject jsonobj = new JSONObject();
+		JSONArray bookinfoArray = new JSONArray();
+		JSONObject bookinfo = new JSONObject();
+		
+		Connection conn = null;
+		String sql = "SELECT * FROM nal.book where book_title like '%" + keyword +"%'";
+			
+		try {
+			conn= DBManager.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+				while (rs.next()) {
+					BookVO vo = new BookVO();
+					vo.setBook_title(rs.getString("book_title"));
+					vo.setAuthor(rs.getString("author"));
+					vo.setPublishing(rs.getString("publishing"));
+					vo.setRoom_name(rs.getString("room_name"));
+					vo.setBook_sorting(rs.getString("book_sorting"));
+					vo.setShape(rs.getString("shape"));
+					vo.setIsbn(rs.getLong("isbn"));
+					
+					
+				}
+					
+			}catch (SQLException e) {
+				System.out.println("\n에러 발생! >> searchBook");		
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//end try
+	
+		return jsonobj;
+	}	  
+*/	  
 
+// 2차 수정 searchBook
+	 public BookVO searchBook(String keyword) {
+		Connection conn = null;
+		BookVO vo = new BookVO();
+		
+		String sql = "SELECT * FROM nal.book where book_title like '%" + keyword +"%'";
+		
+		try {
+			conn= DBManager.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+				while (rs.next()) {
+					vo.setBook_title(rs.getString("book_title"));
+					vo.setAuthor(rs.getString("author"));
+					vo.setPublishing(rs.getString("publishing"));
+					vo.setRoom_name(rs.getString("room_name"));
+					vo.setBook_sorting(rs.getString("book_sorting"));
+					vo.setShape(rs.getString("shape"));
+					vo.setIsbn(rs.getLong("isbn"));				
+				}					
+			}catch (SQLException e) {
+				System.out.println("\n에러 발생! >> showBookinfo");		
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//end try	
+			return vo;
+		}//end searchBook
+	  
+	  
+/*	
 	public ArrayList<BookVO> searchBook(String keyword) {
+		Connection conn = null;
 		String sql = "SELECT * FROM nal.book where book_title like '%" + keyword +"%'";
 		ArrayList<BookVO> bookinfo = new ArrayList<BookVO>();
 		
@@ -79,6 +153,7 @@ public class BookDAO {
 		}//end try	
 		return bookinfo;
 	}//end searchBook
+*/
 	
 /*	//board 테이블의 레코드 가져오기
 	public ArrayList<BoardDTO> getBoardList(int page, int limit, String items, String text) {
@@ -140,6 +215,7 @@ public class BookDAO {
 	}//end method
 */	
 	public String showBookTitle() {
+		Connection conn = null;
 		BookVO bookVO = new BookVO();
 		
 		String sql = "select book_title from nal.book";

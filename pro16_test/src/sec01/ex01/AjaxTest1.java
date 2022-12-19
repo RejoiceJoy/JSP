@@ -37,8 +37,8 @@ public class AjaxTest1 extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		System.out.println("dodoHandle 메서드 호출");
 		
-		String param = (String)request.getParameter("param");
-		System.out.println("param = " + param);
+		String getdata = (String)request.getParameter("parameter");
+		System.out.println("getdata = " + getdata);
 		
 		PrintWriter writer = response.getWriter();
 		writer.print("안녕하세요! 서버입니다.");

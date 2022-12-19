@@ -2,6 +2,11 @@ package book;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import util.DBManager;
 
 /**
  * Servlet implementation class BookControllerJson
@@ -46,6 +53,8 @@ public class BookControllerJson extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = response.getWriter();
 		
+		BookDAO dao = BookDAO.getInstance();
+		
 		JSONObject totalObject = new JSONObject();	//배열을 저장할 totalObject 선언
 		JSONArray bookinfoArray = new JSONArray();	//bookinfo JSON 객체 저장할 bookinfoArray JSONArray배열 선언
 		JSONObject bookinfo = new JSONObject();		//책 한 권의 정보가 들어갈 bookinfo JSON 객체 선언
@@ -57,7 +66,7 @@ public class BookControllerJson extends HttpServlet {
 		bookinfo.put("shape", "네모 24cm");
 		bookinfo.put("isbn", "216516546512");
 		bookinfoArray.add(bookinfo);				//책 정보를 다시 bookinfoArray 배열에 저장
-		
+
 		bookinfo = new JSONObject();				//다른 책 정보를 name/value 쌍으로 저장
 		bookinfo.put("book_title", "아낌없이주는트리");
 		bookinfo.put("author", "배재연");
@@ -73,6 +82,68 @@ public class BookControllerJson extends HttpServlet {
 		String jsoninfo = totalObject.toJSONString();//JSONObject를 문자열로 변환
 		System.out.print(jsoninfo);
 		writer.print(jsoninfo);						//JSON 데이터를 브라우저로 전송
+		
+		System.out.println();
 
+		String keyword = (String)request.getParameter("keyword");		
+		System.out.println(keyword);
+		
 	}//end doHandle
+	
+	
+	public JSONObject showBookinfo(String keyword) {
+		BookDAO dao = BookDAO.getInstance();
+		JSONObject jsonobj = new JSONObject();
+		JSONArray bookinfoArray = new JSONArray();
+		JSONObject bookinfo = new JSONObject();
+		
+		BookVO vo = dao.searchBook(keyword);
+		
+		
+		
+		
+		
+		return jsonobj;
+	}
+	
+	
+	
+	public ArrayList<BookVO> searchBook(String keyword) {
+		Connection conn = null;
+		String sql = "SELECT * FROM nal.book where book_title like '%" + keyword +"%'";
+		ArrayList<BookVO> bookinfo = new ArrayList<BookVO>();
+		
+		try {
+		conn= DBManager.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				BookVO vo = new BookVO();
+				vo.setBook_title(rs.getString("book_title"));
+				vo.setAuthor(rs.getString("author"));
+				vo.setPublishing(rs.getString("publishing"));
+				vo.setRoom_name(rs.getString("room_name"));
+				vo.setBook_sorting(rs.getString("book_sorting"));
+				vo.setShape(rs.getString("shape"));
+				vo.setIsbn(rs.getLong("isbn"));
+				
+				bookinfo.add(vo);
+			}
+			
+		}catch (SQLException e) {
+			System.out.println("\n에러 발생! >> searchBook");		
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}//end try	
+		return bookinfo;
+	}//end searchBook
+	
+	
+
+	
+	
+	
+	
 }//end class
