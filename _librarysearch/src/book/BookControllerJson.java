@@ -23,7 +23,7 @@ import util.DBManager;
 /**
  * Servlet implementation class BookControllerJson
  */
-@WebServlet("/search")
+//@WebServlet("/search")
 public class BookControllerJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -119,9 +119,9 @@ public class BookControllerJson extends HttpServlet {
 		JSONArray bookinfoArray = new JSONArray();
 		JSONObject bookinfo = new JSONObject();
 		
-		BookVO vo = dao.searchBook(keyword);	//searchBook 메서드 호출:BookVO 객체받아
+//		BookVO vo = dao.searchBook(keyword);	//searchBook 메서드 호출:BookVO 객체받아
 		
-		
+/*		
 		bookinfo.put("book_title", vo.getBook_title());
 		bookinfo.put("author", vo.getAuthor());
 		bookinfo.put("publishing", vo.getPublishing());
@@ -129,7 +129,7 @@ public class BookControllerJson extends HttpServlet {
 		bookinfo.put("book_sorting", vo.getBook_sorting());
 		bookinfo.put("shape", vo.getShape());
 		bookinfo.put("isbn", vo.getIsbn());
-		
+*/		
 		bookinfoArray.add(bookinfo);
 		jsonobj.put("books", bookinfoArray);		
 		return jsonobj;

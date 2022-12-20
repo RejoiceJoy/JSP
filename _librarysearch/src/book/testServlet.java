@@ -23,7 +23,7 @@ import util.DBManager;
 /**
  * Servlet implementation class BookControllerJson
  */
-@WebServlet("/search")
+@WebServlet("/search1")
 public class testServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -53,8 +53,8 @@ public class testServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = response.getWriter();
 		
-		BookDAO dao = BookDAO.getInstance();
-		
+		/*
+		BookDAO dao = BookDAO.getInstance();	
 		JSONObject totalObject = new JSONObject();	//배열을 저장할 totalObject 선언
 		JSONArray bookinfoArray = new JSONArray();	//bookinfo JSON 객체 저장할 bookinfoArray JSONArray배열 선언
 		JSONObject bookinfo = new JSONObject();		//책 한 권의 정보가 들어갈 bookinfo JSON 객체 선언
@@ -78,6 +78,7 @@ public class testServlet extends HttpServlet {
 		bookinfoArray.add(bookinfo);				//책 정보를 다시 bookinfoArray 배열에 저장
 		
 		totalObject.put("books", bookinfoArray);	//책 정보 저장한 배열을 books로 totalObject에 저장
+		*/
 		
 		//String jsoninfo = totalObject.toJSONString();//JSONObject를 문자열로 변환
 		//System.out.print(jsoninfo);
@@ -91,9 +92,6 @@ public class testServlet extends HttpServlet {
 		String jsoninfo = showBookinfo(keyword).toJSONString();
 		System.out.println(jsoninfo);
 		writer.print(jsoninfo);
-		
-		
-		
 		
 	}//end doHandle
 	
@@ -143,30 +141,27 @@ public class testServlet extends HttpServlet {
 	}//end showBookinfo
 */	
 	public JSONObject showBookinfo(String keyword) {
-		//BookDAO dao = BookDAO.getInstance();
+		BookDAO dao = BookDAO.getInstance();
 		JSONObject jsonobj = new JSONObject();
 		
-		try {
+
 			JSONArray bookinfoArray = new JSONArray();
 			ArrayList<BookVO> infoArr = dao.searchBook(keyword);	//searchBook 메서드 호출:ArrayList 받아옴
 			
 			for (int i = 0; i < infoArr.size(); i++) {
 				JSONObject bookinfo = new JSONObject();
 				bookinfo.put("book_title", infoArr.get(i).getBook_title());
-				bookinfo.put("book_title", infoArr.get(i).getBook_title());
-				bookinfo.put("book_title", infoArr.get(i).getBook_title());
-				bookinfo.put("book_title", infoArr.get(i).getBook_title());
-				bookinfo.put("book_title", infoArr.get(i).getBook_title());
-				bookinfo.put("book_title", infoArr.get(i).getBook_title());
-				bookinfo.put("book_title", infoArr.get(i).getBook_title());
+				bookinfo.put("author", infoArr.get(i).getBook_title());
+				bookinfo.put("publishing", infoArr.get(i).getBook_title());
+				bookinfo.put("room_name", infoArr.get(i).getBook_title());
+				bookinfo.put("book_sorting", infoArr.get(i).getBook_title());
+				bookinfo.put("shape", infoArr.get(i).getBook_title());
+				bookinfo.put("isbn", infoArr.get(i).getBook_title());
 				
 				bookinfoArray.add(bookinfo);						
 			}
 			jsonobj.put("books", bookinfoArray);	
-			
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}												
+												
 		return jsonobj;
 	}//end showBookinfo	
 	

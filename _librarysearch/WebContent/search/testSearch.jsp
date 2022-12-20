@@ -23,7 +23,7 @@
 			$.ajax({
 				type:"post",	//post 방식으로 전송
 				async:false,	//동기식으로 처리
-				url:"${contextPath}/search",			//전송할 서블릿 지정
+				url:"${contextPath}/search1",			//전송할 서블릿 지정
 				data: {keyword: putkeyword},
 				success:function (data, textStatus){	//전송과 응답이 성공했을 경우 작업 설정
 					var jsoninfo = JSON.parse(data);	//서블릿에서 가져온 데이터를 받음
@@ -38,7 +38,7 @@
 						bookinfo += "모양: " + jsoninfo.books[i].shape + "<br>";
 						bookinfo += "isbn: " + jsoninfo.books[i].isbn + "<br><br><br>";
 					} //end for
-					
+				
 					$("#output").html(bookinfo);
 				}, //end success function
 				error: function (data, textStatus) {
@@ -54,11 +54,17 @@
 	<a id="showbookinfo" style = "cursor:pointer">책 정보 보기</a><br><br>
 	<div id="output"></div>
 
+
+
+<%-- 
  <%
 	BookDAO bookDAO = BookDAO.getInstance();
 	//  bookDAO.showbookinfo(); 
 %>
 <%= bookDAO.showBookTitle() %> 
+
+ --%>
+
 
 </body>
 </html>

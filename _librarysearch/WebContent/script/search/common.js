@@ -39,7 +39,7 @@ $(document).ready(function() {
  * 검색조건 초기화
  * @returns
  */
-function initSearchCondition() {
+function ainitSearchCondition() {
 
     var searchType = $("#searchType").val();
     if (searchType == "INNER_SEARCH") {
@@ -161,7 +161,7 @@ function initSearchCondition() {
 /**
  * 이벤트를 등록한다.
  */
-function addCommonEventListeners() {
+function aaddCommonEventListeners() {
     // form submit 전 이벤트
     $("#searchForm").submit(function() {
     	var searchMehtod = $("#searchMehtod").val();
@@ -266,7 +266,7 @@ function addCommonEventListeners() {
     });
 
     // 상세검색
-    $("#detailSearch").on($.modal.BEFORE_OPEN, function(event, modal) {
+    $("#detailSearch").off($.modal.BEFORE_OPEN).on($.modal.BEFORE_OPEN, function(event, modal) {
         // 라디오 버튼 초기화
         $("input:radio[name=mainDbDivCode]:input[value=ALL]").attr("checked", true);
         // 하위 높이 초기화
@@ -303,7 +303,7 @@ function addCommonEventListeners() {
 /**
  * 리스트를 검색한다.
  */
-function searchInnerList(searchQuery) {
+function asearchInnerList(searchQuery) {
     // 현재 검색 종류가 외부기관 검색인 경우, ZONE 을 ALL_NI_TOC로 기본 셋팅
     if ($("#searchType").val() == "OUTER_SEARCH") {
         $("#zone").val("ALL_NI_TOC");
@@ -324,7 +324,7 @@ function searchInnerList(searchQuery) {
     form.submit();
 }
 
-function searchOuterList() {
+function asearchOuterList() {
     // 현재 검색 종류가 소장자료 검색인 경우, ZONE 을 BI로 기본 셋팅
     if ($("#searchType").val() == "INNER_SEARCH") {
         $("#zone").val("BI");
@@ -338,7 +338,7 @@ function searchOuterList() {
     form.submit();
 }
 
-function searchInnerDetail(controlNo, hanjaYn) {
+function asearchInnerDetail(controlNo, hanjaYn) {
     // 변경 할 사항을 hidden에 저장
     $("#searchType").val("INNER_SEARCH");
     $("#resultType").val("INNER_SEARCH_DETAIL");
@@ -371,7 +371,7 @@ function searchInnerDetail(controlNo, hanjaYn) {
 /**
  * 팝업닫기후 -> 상세 이동. 20211028 KHJ
  * */
-function searchInnerDetailMove(controlNo) {
+function saearchInnerDetailMove(controlNo) {
     // 변경 할 사항을 hidden에 저장
     $("#searchType").val("INNER_SEARCH");
     $("#resultType").val("INNER_SEARCH_DETAIL");
@@ -394,7 +394,7 @@ function searchInnerDetailMove(controlNo) {
 /**
  * 자료구분을 변경한다.
  */
-function changeDbDiv(mainMenuCode, subMenuCode) {
+function achangeDbDiv(mainMenuCode, subMenuCode) {
     // 변경 사항을 hidden에 저장
     if (mainMenuCode != null) {
         $("#topMainMenuCode").val(mainMenuCode);
@@ -433,7 +433,7 @@ function changeDbDiv(mainMenuCode, subMenuCode) {
     searchInnerList();
 }
 
-function changePageSizeAndOrderBy() {
+function achangePageSizeAndOrderBy() {
 
 	$("#searchMehtod").val("F");
 
@@ -466,7 +466,7 @@ function changePageSizeAndOrderBy() {
  * @param val
  * @returns
  */
-function setSearchSelectBox(obj, val) {
+function asetSearchSelectBox(obj, val) {
 	$(obj).val(val).prop("selected", true);
 	changePageSizeAndOrderBy();
 }
@@ -476,7 +476,7 @@ function setSearchSelectBox(obj, val) {
  * 발행연도 검색의 경우, 기존에는 개별 파라미터를 사용했으나 현재는 fieldText로 만들어 사용한다.
  * 따라서 fieldText에 내용이 있는 경우, 발행연도 부분만 추출하여 변경된 발행연도로 교체하는 작업을 해야함.
  */
-function changePubYear() {
+function achangePubYear() {
     // 변경 사항을 hidden에 저장
     var startPubYear = $("#startPubYear").val();
     var endPubYear   = $("#endPubYear").val();
@@ -524,7 +524,7 @@ function changePubYear() {
 /**
  * 검색어를 변경한다.
  */
-function changeSearchQuery(searchQuery) {
+function achangeSearchQuery(searchQuery) {
     // 변경 사항을 hidden에 저장
     $("#searchQuery").val(searchQuery);
     $("#searchMehtod").val("L");
@@ -536,7 +536,7 @@ function changeSearchQuery(searchQuery) {
  * 원문을 변경한다.
  * @returns
  */
-function changeOrgDoc(menuType, menuCode) {
+function achangeOrgDoc(menuType, menuCode) {
     $("#searchMehtod").val("F");
     // 원문있는 자료중에서 하위 메뉴 클릭시, isdb 값을 1로 고정
     if (menuType == "isdbsvc") {
@@ -565,7 +565,7 @@ function changeOrgDoc(menuType, menuCode) {
 /**
  * 언어를 변경한다.
  */
-function changeLanguage(languageCode) {
+function achangeLanguage(languageCode) {
     $("#languageCode").val(languageCode);
     $("#searchMehtod").val("F");
 
@@ -594,7 +594,7 @@ function changeLanguage(languageCode) {
  * ULK (국회도서관)
  * BNK (국회부산도서관)
  */
-function changeDpBranch(dpBranch) {
+function achangeDpBranch(dpBranch) {
     $("#dpBranch").val(dpBranch);
     $("#searchMehtod").val("F");
 
@@ -620,7 +620,7 @@ function changeDpBranch(dpBranch) {
 /**
  * 학술지종류 추가, 20211224 KHJ
  */
-function changeJournalKind(journalKind) {
+function achangeJournalKind(journalKind) {
 	$("#journalKind").val(journalKind);
     $("#dpBranch").val(dpBranch);
     $("#searchMehtod").val("F");
@@ -643,7 +643,7 @@ function changeJournalKind(journalKind) {
 
 
 
-function getInSession() {
+function agetInSession() {
     var asideState = $("#asideState").val();
     $.ajax({
         type:"post",
@@ -658,7 +658,7 @@ function getInSession() {
 /**
  * search class를 변경한다. (S : 일반자료구분, G : 공공정책자료)
  */
-function changeSearchClass(searchClass) {
+function achangeSearchClass(searchClass) {
     // 변경 사항을 hidden에 저장
     $("#searchClass").val(searchClass);
     $("#searchMehtod").val("L");
@@ -671,7 +671,7 @@ function changeSearchClass(searchClass) {
  * @param hanjaYn
  * @returns
  */
-function changeHanjaYnByList(hanjaYn) {
+function achangeHanjaYnByList(hanjaYn) {
     $("#searchMehtod").val("F")
 
     // 변경 사항을 hidden에 저장
@@ -697,7 +697,7 @@ function changeHanjaYnByList(hanjaYn) {
     searchInnerList();
 }
 
-function searchListByCriteria() {
+function asearchListByCriteria() {
     var formData = $("#criteriaForm").serializeArray();
 
     var zoneObj        = new Object();
@@ -824,7 +824,7 @@ function searchListByCriteria() {
 /**
  * 용어관계사전 용어를 검색한다.
  */
-function getSynonymList(searchQuery) {
+function agetSynonymList(searchQuery) {
     if (searchQuery == "" ) {
         return false;
     }
@@ -855,7 +855,7 @@ function getSynonymList(searchQuery) {
  * @param code
  * @returns
  */
-function changeMultiLang(obj, code) {
+function achangeMultiLang(obj, code) {
 
     var langArr = marrUniLang[code];
 
@@ -874,7 +874,7 @@ function changeMultiLang(obj, code) {
  * @param lang
  * @returns
  */
-function addMultiLang(lang) {
+function aaddMultiLang(lang) {
     if (G_MULTI_LANG_TYPE == "L") {
         G_MULTI_LANG_FOCUS_ID = "searchQuery";
     } else if (G_MULTI_LANG_TYPE == "D") {
@@ -894,7 +894,7 @@ function addMultiLang(lang) {
  * @param focusId
  * @returns
  */
-function setFocusIdForMultiLang(focusId) {
+function asetFocusIdForMultiLang(focusId) {
     G_MULTI_LANG_FOCUS_ID = focusId;
 }
 
@@ -902,7 +902,7 @@ function setFocusIdForMultiLang(focusId) {
 /**
  * 자료 구분별 상세검색 필드를 로드한다.
  */
-function loadCriteriaFields(dbDivCode) {
+function aloadCriteriaFields(dbDivCode) {
     $.ajax({
         url        : "/search/getDetailSearchFieldList.do",
         type       : "POST",
@@ -1066,7 +1066,7 @@ function loadCriteriaFields(dbDivCode) {
     });
 }
 
-function loadTlawFields(dbDivCode) {
+function aloadTlawFields(dbDivCode) {
     $.ajax({
         url        : "/search/getDetailSearchFieldList.do",
         type       : "POST",
@@ -1227,7 +1227,7 @@ function loadTlawFields(dbDivCode) {
  * @param divId
  * @returns
  */
-function loadAssemOrderAndCommit(dbDivCode) {
+function aloadAssemOrderAndCommit(dbDivCode) {
     var startDaesu = $("#ASSEM_DAESU_START option:selected").val();
     var endDaesu   = $("#ASSEM_DAESU_END option:selected").val();
     var confer     = $("#ASSEM_CONFER option:selected").val();
@@ -1287,7 +1287,7 @@ function loadAssemOrderAndCommit(dbDivCode) {
     });
 }
 
-function checkAssemDaesu(dbDivCode) {
+function acheckAssemDaesu(dbDivCode) {
     var startDaesu = $("#ASSEM_DAESU_START option:selected").val();
     var endDaesu   = $("#ASSEM_DAESU_END option:selected").val();
 
@@ -1297,7 +1297,7 @@ function checkAssemDaesu(dbDivCode) {
     }
 }
 
-function resetForm() {
+function aresetForm() {
     var mainDbDivCode = $("input:radio[name=mainDbDivCode]:checked").val();
     var subDbDivCode  = $("input:radio[name=subDbDivCode]:checked").val();
 
@@ -1312,7 +1312,7 @@ function resetForm() {
  * 프로그램 다운로드 팝업을 연다.
  * @returns
  */
-function viewDownloadProgram() {
+function aviewDownloadProgram() {
 //    var winPlatform = "Windows XP";
 //    if (winPlatform == "Windows XP" || winPlatform == "Windows Vista") {
 //        $("#downloadViewer").attr("href", "https://viewer.nanet.go.kr/assets/nanet/nalsvc/StreamdocsAgentSetup_portable_xp.exe")
@@ -1324,7 +1324,7 @@ function viewDownloadProgram() {
     $("#donwloadProgram").modal();
 }
 
-function getWinPlatform() {
+function agetWinPlatform() {
 
     var appVersion = navigator.appVersion;
     var winPlatform;
@@ -1356,7 +1356,7 @@ function getWinPlatform() {
 }
 
 //검색결과 취소, 추가. 20211224 KHJ
-function cancelLeftFacet(menuType) {
+function acancelLeftFacet(menuType) {
     console.log(">>>>> cancelLeftFacet + " + menuType);
 
     if (menuType == "isdb") {
@@ -1424,13 +1424,13 @@ function cancelLeftFacet(menuType) {
  * @param expireDay
  * @returns
  */
-function setDoNotOpenTodayCookie(name, value, expireDay) {
+function asetDoNotOpenTodayCookie(name, value, expireDay) {
     var todayDate = new Date();
     todayDate.setDate(todayDate.getDate() + expireDay);
     document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
 }
 
-function replacedSearchQueryBySpecialChar(searchQuery) {
+function areplacedSearchQueryBySpecialChar(searchQuery) {
 	if (searchQuery.length == 0) {
 		return "";
 	}
@@ -1443,7 +1443,7 @@ function replacedSearchQueryBySpecialChar(searchQuery) {
      return searchQuery;
 }
 
-function onSelectChange(){
+function aonSelectChange(){
 	if('${isMobile}'){
 		changePageSizeAndOrderBy();
 	}
@@ -1457,7 +1457,7 @@ function onSelectChange(){
  *    함수에 넘어올 연계기관 코드를 입력해줘야함
  *    ($(this), 제어번호, 연계기관, url)
  * */
-function logoOutLink(_this, controlNo, linkUrlDbdiv, url){
+function alogoOutLink(_this, controlNo, linkUrlDbdiv, url){
 
 	var linkUrl = '';
 	if(_this){

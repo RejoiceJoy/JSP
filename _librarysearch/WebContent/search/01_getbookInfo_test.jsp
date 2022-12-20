@@ -9,12 +9,17 @@
 </head>
 <body>
 
+
+<%-- 
+
 <%
 	BookDAO bookDAO = BookDAO.getInstance();
 	bookDAO.showbookinfo();
 
 %>
-<%= bookDAO.showBookTitle() %>
+ <%= bookDAO.showBookTitle() %>
+
+ --%>
 
 </body>
 </html>

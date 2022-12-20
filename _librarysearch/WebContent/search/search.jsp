@@ -46,12 +46,13 @@
 <body>
 	<a id="showbookinfo" style = "cursor:pointer">책 정보 보기</a><br><br>
 	<div id="output"></div>
-
+<%-- 
  <%
 	BookDAO bookDAO = BookDAO.getInstance();
-	bookDAO.showbookinfo();
+//	bookDAO.showbookinfo();
 %>
 <%= bookDAO.showBookTitle() %> 
 
-</body>
+ --%>
+ </body>
 </html>

@@ -101,8 +101,9 @@ public class testDAO {
 	
 		return jsonobj;
 	}	  
-*/	  
-
+*/
+	
+/*
 // 2차 수정 searchBook
 	 public BookVO searchBook(String keyword) {
 		Connection conn = null;
@@ -132,9 +133,9 @@ public class testDAO {
 			}//end try	
 			return vo;
 		}//end searchBook
+*/	  
 	  
-	  
-/*	
+	
 	public ArrayList<BookVO> searchBook(String keyword) {
 		Connection conn = null;
 		String sql = "SELECT * FROM nal.book where book_title like '%" + keyword +"%'";
@@ -166,7 +167,7 @@ public class testDAO {
 		}//end try	
 		return bookinfo;
 	}//end searchBook
-*/
+
 	
 /*	//board 테이블의 레코드 가져오기
 	public ArrayList<BoardDTO> getBoardList(int page, int limit, String items, String text) {
