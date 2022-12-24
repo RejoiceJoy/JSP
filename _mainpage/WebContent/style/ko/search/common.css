@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+#container{width:auto}
+
+.searchBrief:after{clear:both;content:"";display:block}
+
+.brief{position:relative;width:1300px;margin:0 auto;/*padding-top:51px;15px*/}
+
+.briefList{min-height:700px;/*margin-left:260px;*/float: right; width: calc(100% - 258px);}
+@media all and (max-width: 767px) {
+	.briefList { float: none; width: 100%; }
+}
+
+.briefContent{position:relative; background: url(../../../images/ko/leftBgLine.png) left top repeat-y; }
+.briefContent:before { content: ''; display: block; width: 230px; height: 1px; background: #dedede; position: absolute; bottom: 0px; left: 0px; }
+.briefContent:after { content: ''; display: block; clear: both; }
+@media all and (max-width: 767px) {
+	.briefContent { background: none; }
+	.briefContent:before { display: none; }
+}
+
+/* 검색상단 */
+.briefHead{margin-bottom:3px;padding-bottom:10px;border-bottom:2px solid #636363}
+.briefHead:after{clear:both;content:"";display:block}
+.briefHead > p{float:left;margin-bottom:10px;padding-top:10px;font-family:Roboto, NotoSans, NotoSansKR, sans-serif;font-size:16px}
+.briefHead > p span{color:#ee145b;font-size:14px}
+.briefHead > p .count { color: #161616; }
+@media all and (max-width: 767px) {
+	.briefHead { border-bottom: none; }
+}
+
+/* 제한검색 */
+.inquire{float:right}
+.inquire .selectBox1{float:left;border:1px solid #e6e6e6;margin-left:-1px}
+.inquire select{height:33px;padding:0 10px;padding-right:20px;color:#646464;cursor:pointer;
+    -webkit-border-radius:0;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background:url(../../../images/ko/ico/arrow2.png) right 10px center no-repeat;font-size:13px;border:none;
+}
+.inquire select::-ms-expand{display:none}
+.inquire input{float:left;height:35px;font-size:13px;margin-left:-1px;}
+.inquire input{border:1px solid #ccc;color:#000;padding:0 10px;background:#fff;cursor:pointer}
+.inquire input:hover, .inquire input:focus{background-color:#333;color:#fff}
+
+@media (min-width:1025px) and (max-width:1300px){
+    .category .category1 > ul{width:auto}
+	.category .category2 > ul{width:auto}
+    .brief{width:auto}
+}
+@media (min-width:768px) and (max-width:1024px){
+    .category .category1 > ul{width:auto}
+	.category .category2 > ul{width:auto}
+    .brief{width:auto;padding:0 20px 0}
+}
+@media (min-width:0px) and (max-width:940px){
+    .category .category1{overflow-x:auto}
+	.category .category1 > ul{display:flex;width:auto;flex-wrap:nowrap}
+	.category .category1 > ul > li{float:none;margin:0;padding:0px 20px;width:auto}
+	.category .category1 > ul > li:nth-child(4){width:auto}
+	.category .category1 > ul > li > a{white-space:nowrap}
+}
+@media (min-width:0px) and (max-width:767px){
+	.category .category2 > ul{width:auto}
+    .brief{width:auto;padding:0 10px 0}
+    .briefList{margin-left:0}
+}
+
+@media all and (max-width: 1300px) {
+	#header { width: 98%; box-sizing: border-box; padding: 0; margin: 0 auto; }
+	.brief { width: 98%; box-sizing: border-box; padding-left: 0; padding-right: 0; }
+}
+@media all and (max-width: 768px) {
+	.inquire .selectBox1:first-child { display: none; }
+	.inquire input { display: none; }
+	.facet ul li.info { display: none; }
+}
+
+
+/* 통합검색 text, select */
+@media all and (max-width: 425px) {
+	.briefHead { padding-bottom: 10px; }
+	.inquire { float: none; clear: both; }
+	.inquire .selectBox1 { width: 100%; box-sizing: border-box; margin-bottom: 5px; }
+	.inquire select { width: 100%; }
+}
+
+.topmenu.show {display:block;}
+.customTopButton {
+	opacity: 1;
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:10px;
+	padding:2px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+
+	left: unset;
+	right: 8px !important;
+	bottom: 8px;
+	display: block;
+	position: fixed;
+	padding: 8px 4px 8px 4px;
+	text-align: center;
+	display: none;
+}
+
+/* top button */
+.customTopButton {
+	opacity: 1;
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:10px;
+	padding:2px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+
+	left: unset;
+	right: 8px !important;
+	bottom: 100px;
+	display: block;
+	position: fixed;
+	padding: 12px 4px;
+	text-align: center;
+	display: none;
+
+	z-index: 11;
+}
+
+
+#asearch fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: rgb(192, 192, 192);
+    border-image: initial;
+    
+
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+}
+    
+#asearch_ol ol {
+	list-style:auto;
+}

@@ -52,38 +52,7 @@ public class testServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = response.getWriter();
-		
-		/*
-		BookDAO dao = BookDAO.getInstance();	
-		JSONObject totalObject = new JSONObject();	//배열을 저장할 totalObject 선언
-		JSONArray bookinfoArray = new JSONArray();	//bookinfo JSON 객체 저장할 bookinfoArray JSONArray배열 선언
-		JSONObject bookinfo = new JSONObject();		//책 한 권의 정보가 들어갈 bookinfo JSON 객체 선언
-		bookinfo.put("book_title", "아낌없이주는트리");	//책 정보를 name/value 쌍으로 저장
-		bookinfo.put("author", "배재연");	
-		bookinfo.put("publishing", "재연출판사");
-		bookinfo.put("room_name", "코사강의실");
-		bookinfo.put("book_sorting", "B1H4");
-		bookinfo.put("shape", "네모 24cm");
-		bookinfo.put("isbn", "216516546512");
-		bookinfoArray.add(bookinfo);				//책 정보를 다시 bookinfoArray 배열에 저장
-
-		bookinfo = new JSONObject();				//다른 책 정보를 name/value 쌍으로 저장
-		bookinfo.put("book_title", "아낌없이주는트리");
-		bookinfo.put("author", "배재연");
-		bookinfo.put("publishing", "재연출판사");
-		bookinfo.put("room_name", "코사강의실");
-		bookinfo.put("book_sorting", "B1H4");
-		bookinfo.put("shape", "네모 24cm");
-		bookinfo.put("isbn", "216516546512");
-		bookinfoArray.add(bookinfo);				//책 정보를 다시 bookinfoArray 배열에 저장
-		
-		totalObject.put("books", bookinfoArray);	//책 정보 저장한 배열을 books로 totalObject에 저장
-		*/
-		
-		//String jsoninfo = totalObject.toJSONString();//JSONObject를 문자열로 변환
-		//System.out.print(jsoninfo);
-		//writer.print(jsoninfo);						//JSON 데이터를 브라우저로 전송
-		
+				
 		System.out.println();
 
 		String keyword = (String)request.getParameter("keyword");
@@ -95,55 +64,10 @@ public class testServlet extends HttpServlet {
 		
 	}//end doHandle
 	
-/*	
-	public JSONObject showBookinfo(String keyword) {
-		BookDAO dao = BookDAO.getInstance();
-		JSONObject jsonobj = new JSONObject();
-		JSONArray bookinfoArray = new JSONArray();
-		JSONObject bookinfo = new JSONObject();
-		
-		BookVO vo = dao.searchBook(keyword);	//searchBook 메서드 호출:BookVO 객체받아
-		
-		bookinfo.put("book_title", vo.getBook_title());
-		bookinfo.put("author", vo.getAuthor());
-		bookinfo.put("publishing", vo.getPublishing());
-		bookinfo.put("room_name", vo.getRoom_name());
-		bookinfo.put("book_sorting", vo.getBook_sorting());
-		bookinfo.put("shape", vo.getShape());
-		bookinfo.put("isbn", vo.getIsbn());
-		
-		bookinfoArray.add(bookinfo);
-		jsonobj.put("books", bookinfoArray);		
-		return jsonobj;
-	}
-*/	
 	
-/*	
 	public JSONObject showBookinfo(String keyword) {
 		BookDAO dao = BookDAO.getInstance();
-		JSONObject jsonobj = new JSONObject();
-		JSONArray bookinfoArray = new JSONArray();
-		JSONObject bookinfo = new JSONObject();
-		
-		BookVO vo = dao.searchBook(keyword);	//searchBook 메서드 호출:BookVO 객체받아
-			
-		bookinfo.put("book_title", vo.getBook_title());
-		bookinfo.put("author", vo.getAuthor());
-		bookinfo.put("publishing", vo.getPublishing());
-		bookinfo.put("room_name", vo.getRoom_name());
-		bookinfo.put("book_sorting", vo.getBook_sorting());
-		bookinfo.put("shape", vo.getShape());
-		bookinfo.put("isbn", vo.getIsbn());
-		
-		bookinfoArray.add(bookinfo);
-		jsonobj.put("books", bookinfoArray);		
-		return jsonobj;
-	}//end showBookinfo
-*/	
-	public JSONObject showBookinfo(String keyword) {
-		BookDAO dao = BookDAO.getInstance();
-		JSONObject jsonobj = new JSONObject();
-		
+		JSONObject jsonobj = new JSONObject();		
 
 			JSONArray bookinfoArray = new JSONArray();
 			ArrayList<BookVO> infoArr = dao.searchBook(keyword);	//searchBook 메서드 호출:ArrayList 받아옴
@@ -164,6 +88,9 @@ public class testServlet extends HttpServlet {
 												
 		return jsonobj;
 	}//end showBookinfo	
+	
+	
+	
 	
 	//BookDAO ArrayList반환 메서드
 	public ArrayList<BookVO> searchBook(String keyword) {

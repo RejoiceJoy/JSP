@@ -23,18 +23,7 @@
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
 
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
-     <Manager pathname="" />
-    
-    <Resource name="jdbc/oracle"
-          auth="Container"
-          type="javax.sql.DataSource"
-          driverClassName = "oracle.jdbc.driver.OracleDriver"
-		 url = "jdbc:oracle:thin:@localhost:1521/xepdb1"
-		 username = "nal"
-	     password = "nal"
-	     maxActive="50"		
-	     maxWait="-1"          
-          />
-          <!-- 50명 접속할 수 있음 -->
-          <!-- connect풀 쓰는 이유 -->
+    <!--
+    <Manager pathname="" />
+    -->
 </Context>

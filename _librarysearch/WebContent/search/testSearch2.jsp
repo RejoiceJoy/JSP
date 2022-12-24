@@ -27,18 +27,18 @@
 				data: {keyword: putkeyword},
 				success:function (data, textStatus){	//전송과 응답이 성공했을 경우 작업 설정
 					var jsoninfo = JSON.parse(data);	//서블릿에서 가져온 데이터를 받음
-					var bookinfo = "책 정보<br>";
-					bookinfo += "================<br>";
+					var bookinfo = "<ol>";
 					for(var i in jsoninfo.books) {
-						bookinfo += "<ul><li>제목: " + jsoninfo.books[i].book_title + "/";
-						bookinfo += "작가: " + jsoninfo.books[i].author + "</li>";
-						bookinfo += "<li>출판사: " + jsoninfo.books[i].publishing + "</li>";
-						bookinfo += "<li>서가위치: " + jsoninfo.books[i].room_name + "</li>";
-						bookinfo += "<li>분류 기호: " + jsoninfo.books[i].book_sorting + "</li>";
-						bookinfo += "<li>모양: " + jsoninfo.books[i].shape + "</li>";
-						bookinfo += "<li>isbn: " + jsoninfo.books[i].isbn + "</li></ol><br><br><br>";
+						bookinfo += "<li><fieldset><p><h4>";
+						bookinfo += jsoninfo.books[i].book_title + "/";
+						bookinfo += jsoninfo.books[i].author + "</h4></p><p>";
+						bookinfo += jsoninfo.books[i].publishing + " | ";
+						bookinfo += jsoninfo.books[i].room_name + " | ";
+						bookinfo += jsoninfo.books[i].book_sorting + " | ";
+						bookinfo += jsoninfo.books[i].shape + " | ";
+						bookinfo += jsoninfo.books[i].isbn + "</p></fieldset></li>";
 					} //end for
-				
+					bookinfo += "</ol>"
 					$("#output").html(bookinfo);
 				}, //end success function
 				error: function (data, textStatus) {

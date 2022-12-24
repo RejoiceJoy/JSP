@@ -39,7 +39,7 @@ $(document).ready(function() {
  * 검색조건 초기화
  * @returns
  */
-function ainitSearchCondition() {
+function initSearchCondition() {
 
     var searchType = $("#searchType").val();
     if (searchType == "INNER_SEARCH") {
