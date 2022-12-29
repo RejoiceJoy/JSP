@@ -1,0 +1,5 @@
+@import url("common.css");
+@import url("sub_all.css");
+@import url("sub_mobile.css") (max-width: 639px);
+@import url("sub_tablet.css") (min-width: 640px) and (max-width: 1023px);
+@import url("sub_pc.css") (min-width: 1024px);

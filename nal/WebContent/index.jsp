@@ -1,5 +1,24 @@
+<!-- 메인페이지: 이기쁨 -->
+<!-- 10~13번째 줄: 회원아이디 세션값  -->
+<!-- 각 탭에 이동 경로 설정 -->
+<!-- 오른쪽 움직이는 탭에 로그인/회원명 구분해서 출력 -->
+<!-- 98, 100번째 줄 검색 기능 -->
+<!-- 638번째 줄 pushSearch() function: 입력한 키워드 서블릿으로 전송 -->
+
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="usermadang.board.model.FreeboardDAO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+
+<% 	 
+	String sessionId = (String) session.getAttribute("sessionId");
+	String member_name = (String) session.getAttribute("sessionName");
+%> 
+
     <!DOCTYPE html>
     <html lang="ko">
     <head>
@@ -88,12 +107,36 @@
         </div>
         <div class="linkArea">
             <ul>
-                <li class="login">
+                
                     
-                        <a href="./login.do">로그인</a>
+                        
+                <c:choose>
+                
+                <c:when test = "${sessionScope.sessionId == null}">
+                
+                <li class="login" >
+                	<a href="./login.do">로그인</a>
+                	</li>
+                </c:when>
+                
+                
+	         
+				<c:otherwise >
+                  <li class="login">
+                  <a href="#"><%=member_name%>님!</a>
+                  
+                  </li> <!-- 로그인 시, 노출 -->
+                 </c:otherwise>
+				
+			</c:choose>
+                        
+                        
+                        
+                        
+                        
                     
                     
-                </li>
+               
                 <li class="closeday"><a href="http://localhost:8080/nal">휴관일 안내</a></li>
                 <li class="notice"><a href="./freeBoardList.do">자유게시판</a></li>
                 <li class="map"><a href="./GuideServlet">도서관소개</a></li>

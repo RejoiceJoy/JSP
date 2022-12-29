@@ -1,0 +1,132 @@
+@charset "utf-8";
+
+.facet{/*position:absolute;top:0;left:0;*/float:left;width:230px;/*height:100%;overflow-y:auto*/}
+.facet > ul > li > a{display:block;padding:17px 20px;background:#293985;color:#fff;text-decoration:none;border-top:1px solid #444f85}
+.facet > ul > li.type2 > a{background-color:#2c61da;border-top:1px solid #517ad7}
+.facet > ul > li > a > span{display:block;padding-right:20px;background:url(../../../images/ko/ico/open.png) no-repeat 100% 0}
+.facet > ul > li.on > a > span{background:url(../../../images/ko/ico/close.png) no-repeat 100% 0}
+.facet > ul > li > div > div.more{padding-bottom:15px;text-align: center;}
+.facet > ul > li > div > div.more button{border:none;padding:0 18px 0 0;background:url(../../../images/ko/ico/arrow3.png) no-repeat 100% -55%;font-family:NotoSansM, sans-serif;color:#2c61da;cursor: pointer;}
+.facet > ul > li > div > ul.infoGraphicImg{padding-bottom:0}
+.infoGraphicImg > li{padding:15px 0;text-align: center;}
+.facet > ul > li > div > ul{padding-bottom:10px;}
+.facet > ul > li.height > div > ul { height: 95px; overflow: hidden; }
+.facet > ul > li > div > ul > li{margin:0 18px;padding:8px 0}
+.facet > ul > li > div > ul > li > a{display:inline-block;text-decoration:none;font-size:13px;font-family:NotoSans, sans-serif;color:#434343}
+.facet > ul > li > div > ul > li > p{position:relative;padding-right:20px}
+.facet > ul > li > div > ul > li > p > a{display:inline-block;text-decoration:none;font-size:14px;font-family:NotoSans, sans-serif;color:#434343;line-height:18px;}
+.facet > ul > li > div > ul > li > p > button{position:absolute;top:0;right:0;width:16px;height:15px;background:url(../../../images/ko/ico/open2.jpg) no-repeat 0 0;border:none;text-indent:-9999px;overflow:hidden;cursor: pointer;}
+.facet > ul > li > div > ul > li > div{display:none;}
+.facet > ul > li > div > ul > li.on > div { display: block; }
+.facet > ul > li > div > ul > li > div > ul{padding-top:5px}
+.facet > ul > li > div > ul > li > div > ul > li{padding:8px 0 0 5px}
+.facet > ul > li > div > ul > li > div > ul > li > a{position:relative;display:inline-block;padding-left:8px;color:#575656;font-size:14px;text-decoration:none;line-height:17px;}
+.facet > ul > li > div > ul > li > p > a:hover,
+.facet > ul > li > div > ul > li.on > p > a,
+.facet > ul > li > div > ul > li > a:hover,
+.facet > ul > li > div > ul > li.on > a,
+.facet > ul > li > div > ul > li > div > ul > li > a:hover,
+.facet > ul > li > div > ul > li > div > ul > li.on > a { color: #2c61da; }
+.facet > ul > li > div > ul > li > div > ul > li > a span{position:absolute;top:0;left:0;}
+.facet > ul > li > div > ul > li > div > ul > li > a span.cnt { position: relative; top: auto; left: auto; }
+.facet > ul > li.height > div > ul.on { height: auto; }
+.facet > ul > li.height > div > div.more.on button { background-position: right bottom 5px; }
+@media (min-width:0px) and (max-width:767px){
+    .facet{/*position:static;width:auto; background: none;*/ float: none; width: 100%; }
+    .facet > ul > li > div { border-left: 1px solid rgba(195, 195, 195, .55); border-right: 1px solid rgba(195, 195, 195, .55); }
+}
+
+/* 원문이용안내 */
+.facet > ul > li.type2,
+.facet > ul > li.type3 { margin-top: 1px; }
+.facet > ul > li.type3 > span { display: block; padding: 15px 20px; background-color: #2c61da; color: #fff; }
+.facet > ul > li.type3 > div { display: block; border-left: 1px solid #dedede; border-right: 1px solid #dedede; border-bottom: 1px solid #dedede; }
+.facet > ul > li.type3 > div > ul { background-color: #f5f5f5; padding: 0 10px; margin-bottom: 0px; }
+.facet > ul > li.type3 > div > ul > li { margin: 0; padding: 15px 0; border-bottom: 1px solid #eaeaea; }
+.facet > ul > li.type3 > div > ul > li:last-child { border-bottom-width: 0px; }
+.facet > ul > li.type3 > div > ul > li:after { content: ''; display: block; clear: both; }
+.facet > ul > li.type3 > div > ul > li > div { display: block; }
+.facet > ul > li.type3 > div > ul > li > .left { float: left; text-align: center; width: 56px; border: none; }
+.facet > ul > li.type3 > div > ul > li > .right { float: left; width: calc(100% - 56px); font-size: 14px; line-height: 28px; padding-left: 10px; box-sizing: border-box; border: none; }
+.facet > ul > li.type3 > div > ul > li > p { padding: 0; font-size: 14px; color: #5b5b5c; }
+@media all and (max-width: 768px) {
+	.facet > ul > li.type3 > div > ul li:first-child { display: block; }
+}
+@media all and (min-width:0px) and (max-width:767px){
+	.facet { border-bottom-width: 0px; }
+	.facet > ul > li:last-child { border-bottom: 1px solid rgba(195, 195, 195, .55); }
+	.facet > ul > li.type3 { margin-top: 0px; }
+	.facet > ul > li.type3 > div { border-bottom: none; }
+	.facet > ul > li.type3 > div > ul { margin-bottom: 0px; border-bottom-width: 0px; }
+}
+
+/* 발행연도 */
+.graphDate .searchRange {overflow:hidden;line-height:2.3em}
+.graphDate .searchRange span {float:left;display:inline-block;width:16px;text-align:center}
+#pubYear > dl { padding: 20px; }
+#pubYear .graphWrap {position:relative;width:100%;height:75px;margin-bottom:20px}
+#pubYear .graph {overflow:hidden;position:absolute;left:0;bottom:0;width:100%;height:75px}
+#slider {margin-bottom:20px}
+#pubYear .graphDate {display:block;overflow:hidden}
+#pubYear .graphDate > * { vertical-align: middle; }
+#pubYear .graphDate input[type="text"] { float: left; width: calc(50% - 29px); height: 28px; box-sizing: border-box; border: 1px solid #d1d0cf; font-size: 13px; color: #4c4c4c; padding: 0 5px; }
+#pubYear .graphDate span { float: left;  width: 16px; text-align: center; }
+#pubYear .graphDate .pubYearBtn { float: left; height: 28px; box-sizing: border-box; border: 1px solid #d1d0cf; color: #4c4c4c; margin-left: 4px; padding: 0 5px; font-size: 14px; vertical-align: top; }
+#pubYear .graphDate .pubYearBtn:hover { background-color: #fff; }
+
+/* 외부기관 소장자료 - 로딩이미지 */
+.loading { padding-right: 18px; background: url("../../../images/ko/ajax-loader.gif") right center no-repeat; background-size: 16px; }
+.facet > ul > li > div > ul > li > div > ul > li > a .dbCnt { position: relative; left: auto; top: auto; }
+
+/* 외부기관 소장자료 - 컬러변경 */
+.facet.outer > ul > li > a { background-color: #47266c; }
+.facet.outer > ul > li > div > ul > li.on > p > a,
+.facet.outer > ul > li > div > ul > li > div > ul > li > a:hover,
+.facet.outer > ul > li > div > ul > li > div > ul > li.on > a { color: #6f3ba8; }
+
+/* 발행연도 - 슬라이드 바 높이 */
+.ui-slider-horizontal { height: .4em } /* 바 높이 */
+.ui-slider .ui-slider-handle { width: .85em; height: .85em; } /* 버튼 크기 */
+
+/* 원문이용안내 이미지 세로 정렬 */
+.facet > ul > li.type3 > div > ul > li > .left img { vertical-align: text-bottom; margin-top: 7px; }
+
+/* 원문이용안내 간격 조정  */
+.facet > ul > li.type3 > div > ul > li { padding: 5px 0; }
+.facet > ul > li.type3 > div > ul > li:last-child { padding: 10px 0; }
+.facet > ul > li.type3 > div > ul > li > p { font-weight: 500; line-height: normal; }
+
+/* 검색 결과 취소 */
+.facet > ul > li.type4 > a { background: #683697; }
+.facet > ul > li.type4 .searchCancel ul { margin-top: 10px; }
+.facet > ul > li.type4 .searchCancel ul li { font-size: 13px; color: #707070; position: relative; padding: 5px 0; box-sizing: border-box; }
+.facet > ul > li.type4 .searchCancel ul li span { display: inline; margin-right: 5px; }
+.facet > ul > li.type4 .searchCancel ul li .cancel { display: inline; font-size: 0; text-indent: -9999px; }
+.facet > ul > li.type4 .searchCancel ul li .cancel img { vertical-align: baseline; }
+
+/* 검색 결과 제한 */
+.facet .m { display: none; }
+@media all and (max-width: 767px) {
+	.facet > ul { display: none; }
+	.facet.on > ul { display: block; }
+	.facet .m { display: block; }
+	.facet .top { padding: 20px 15px; border: 1px solid #0b40b9; position: relative; }
+	.facet .top h3 { color: #0b40b9; font-size: 16px; padding-right: 43px; }
+	.facet .top a { display: block; width: 33px; height: 25px; position: absolute; right: 15px; top: calc(50% - 12.5px); box-sizing: border-box; font-size: 0; text-indent: -9999px; background: url("../../../images/ko/ico/m_search.png") center no-repeat; }
+	.facet.on .top { border-bottom: none; }
+}
+
+/* 소장도서관, 20210726 추가. KHJ */
+.selectLib{margin-bottom: 25px;position:relative;border-bottom: 1px solid #dedede;}
+.selectLib:after{display:block;content:'';width:calc(100% + 2px);height: 24px;background:#fff;position:absolute;left:-1px;bottom: -25px;}
+.selectLib .tit{background:#f8b858; padding:16px;color:#242424; font-size:18px; font-weight: 500;}
+.selectLib ul{padding:12px 20px 16px;}
+.selectLib ul li{line-height:1}
+.selectLib ul li:not(:last-of-type){margin-bottom:12px}
+.selectLib ul li input[type="radio"]{float:right}
+.selectLib ul li label{color:#5a5a5a; font-weight:500}
+.selectLib ul li a.on {color:#1452de}
+
+@media all and (max-width: 767px) {
+	.selectLib ul{border-right:1px solid #dedede;border-left:1px solid #dedede;}
+}

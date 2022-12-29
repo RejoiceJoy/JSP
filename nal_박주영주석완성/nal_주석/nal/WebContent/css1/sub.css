@@ -1,0 +1,16 @@
+/* common.css */
+@import url("common.css");
+/*@import url("common_main.css");*/
+
+@import url("sub_all.css");
+
+/* sub.css */
+/* mobile media */
+@import url("sub_mobile.css")  (max-width:639px) ;
+
+/* tablet media */
+@import url("sub_tablet.css") (min-width:640px) and (max-width:1023px)  ;
+
+/* PC media */
+@import url("sub_pc.css") (min-width:1024px) ;
+

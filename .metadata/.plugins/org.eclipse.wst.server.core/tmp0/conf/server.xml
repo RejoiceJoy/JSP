@@ -153,16 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\_librarysearch" path="/_librarysearch" reloadable="true" source="org.eclipse.jst.jee.server:_librarysearch">
- <WatchedResource>WEB-INF/web.xml</WatchedResource>
- <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="-1" maxWaitMillis="-1" name="jdbc/myoracle" password="nal" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1" username="nal"/>
-</Context><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\_mainpage" path="/_mainpage" reloadable="true" source="org.eclipse.jst.jee.server:_mainpage">
- <WatchedResource>WEB-INF/web.xml</WatchedResource>
- <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="-1" maxWaitMillis="-1" name="jdbc/oracle" password="nal" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1" username="nal"/>
-</Context><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MVC2_ORACLE_Shop" path="/MVC2_ORACLE_Shop" reloadable="true" source="org.eclipse.jst.jee.server:MVC2_ORACLE_Shop">
- <WatchedResource>WEB-INF/web.xml</WatchedResource>
- <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="-1" maxWaitMillis="-1" name="jdbc/myoracle" password="tiger2" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1" username="scott2"/>
-</Context><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\nal" path="/nal" reloadable="true" source="org.eclipse.jst.jee.server:nal">
+      <Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\workspace1205\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\nal" path="/nal" reloadable="true" source="org.eclipse.jst.jee.server:nal">
 
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->

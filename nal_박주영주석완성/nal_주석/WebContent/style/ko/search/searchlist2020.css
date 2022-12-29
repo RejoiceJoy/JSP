@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* 인포그래픽 - 스타일 수정 */
+#search_graph { z-index: 1; }
+#search_graph.on { z-index: 9; }
+#search_graph .search_close { margin-top: 7px; }
+#search_graph ul.tab { height: 51px; min-height: 51px; position: relative; border-bottom: 1px solid #2c61da; }
+#search_graph ul.tab li a { background: #fff; border: 1px solid #2c61da; height: 40px; line-height: 40px; font-weight: 400; }
+#search_graph ul.tab li a.selected { background: #fff; color: #2c61da; font-weight: 500; border-bottom-color: #fff; }
+#search_graph ul.panel { border-color: #2c61da; border-top: none; border-radius: 0px; background: #fff; }
+#search_graph ul.panel .sc_page .prevnext_page { background: #fff; }
+.table_box { background-color: #fff; }
+.search_table_01 { margin-top: 0px; padding-top: 50px; background: #fff; }
+#search_graph ul.panel .search_cat,
+#search_graph ul.panel .search_cat > a,
+#search_graph ul.panel .search_cat > a.view { width: 93px; }
+#search_graph ul.panel .search_cat .more_cat_list li input { margin-right: 0px; float: none; }
+#search_graph ul.panel .btn_view_large { width: 79px; right: 107px; }
+#search_graph ul.panel .btn_table ,
+#search_graph ul.panel .btn_graph { width: 86px; right: 15px; }

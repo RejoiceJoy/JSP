@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import usermadang.board.util.DBConnection;
+import util.DBConnection;
 
 public class FreeboardDAO {
 	
@@ -264,6 +264,105 @@ public class FreeboardDAO {
 		return null;
 	}
 
+	public int getBeforeArticleno(int articleno, String searchKeyCode, String searchKeyWord) {
+		int boforeArticleno = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		if(searchKeyCode == null && searchKeyWord == null) {
+			sql = "SELECT articleno, LAG(articleno, 1, 0) OVER(ORDER BY articleno DESC) AS beforeno FROM nal.freeboard WHERE deletion=0 ";
+		} else {
+			sql = "SELECT articleno, LAG(articleno, 1, 0) OVER(ORDER BY articleno DESC) AS beforeno FROM nal.freeboard WHERE (" + searchKeyCode + " like '%" + searchKeyWord + "%') AND (deletion = 0) ";
+		}
+		
+		
+		try {
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				if(rs.getInt("articleno")==articleno) {
+					boforeArticleno = rs.getInt("beforeno");
+					System.out.println(boforeArticleno);
+				}
+			}
+			
+			return boforeArticleno;
+		} catch(Exception e) {
+			System.out.println("getBeforeArticleno() 에러 : " + e);
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		
+		return 0;
+	}
+	
+	public int getAfterArticleno(int articleno, String searchKeyCode, String searchKeyWord) {
+		int afterArticleno = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		if(searchKeyCode == null && searchKeyWord == null) {
+			sql = "SELECT articleno, LEAD(articleno, 1, 0) OVER(ORDER BY articleno DESC) AS afterno FROM nal.freeboard WHERE deletion=0 ";
+		} else {
+			sql = "SELECT articleno, LEAD(articleno, 1, 0) OVER(ORDER BY articleno DESC) AS afterno FROM nal.freeboard WHERE (" + searchKeyCode + " like '%" + searchKeyWord + "%') AND (deletion = 0) ";
+		}
+		
+		try {
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				if(rs.getInt("articleno")==articleno) {
+					afterArticleno = rs.getInt("afterno");
+					System.out.println(afterArticleno);
+				}
+			}
+			
+			return afterArticleno;
+		} catch(Exception e) {
+			System.out.println("getAfterArticleno() 에러 : " + e);
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		
+		return 0;
+	}
+	
 	public void insertArticle(FreeboardVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

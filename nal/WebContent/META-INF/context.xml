@@ -26,9 +26,9 @@
      <Manager pathname="" />
     
     <Resource name="jdbc/oracle"
-          auth="Container"
-          type="javax.sql.DataSource"
-          driverClassName = "oracle.jdbc.driver.OracleDriver"
+         auth="Container"
+         type="javax.sql.DataSource"
+         driverClassName = "oracle.jdbc.driver.OracleDriver"
 		 url = "jdbc:oracle:thin:@localhost:1521/xepdb1"
 		 username = "nal"
 	     password = "nal"

@@ -1,8 +1,27 @@
-<!-- 국회소장자료 : 일반자료 상단 메뉴 --><!-- 국회소장자료 : 공공정책자료 상단 메뉴 --><!-- 국회소장자료 : 왼쪽 메뉴 --><!-- 외부기관소장자료 : 왼쪽메뉴 -->
+<!-- 도서 검색 창: 이기쁨 -->
+<!-- !!!!!!!!!!!!!!!!!!엔터누르지말고 버튼 클릭!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- 10~13번째 줄: 회원아이디 세션값  -->
+<!-- 91~129번째 줄: JQuery에서 JSON을 이용해 Ajax 기능 사용하기 -->
+<!-- 314, 324번째 줄: 검색 -->
+<!-- 1477번째 줄: 출력하는 곳 -->
+<!-- 1480~1506번 째 줄: 메인창에서 검색했을 경우 출력 -->
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false" %>
-<%@page import="main.*"%>
+<%@page import="book.model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ page import="usermadang.board.model.FreeboardDAO"%>
+
+
+<% 	 
+	String sessionId = (String) session.getAttribute("sessionId");
+	String member_name = (String) session.getAttribute("sessionName");
+%>
+
+
+
+
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"  /> 
 
@@ -74,33 +93,33 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	$(function() {
-		$("#showbookinfo").click(function() {
-			var putkeyword = $("#putkeyword").val();
+		$("#showbookinfo").click(function() {			//id showbookinfo 를 클릭할때 함수 실행
+			var putkeyword = $("#putkeyword").val();	//id가 putkeyword인 곳에서 밸류 값을 받아옴
 			if(putkeyword == '') {
 				alert("검색어를 입력하세요");
 				return;
-			}
-			
+			}			
 			$.ajax({
 				type:"post",	//post 방식으로 전송
 				async:false,	//동기식으로 처리
 				url:"${contextPath}/search.nal",			//전송할 서블릿 지정
-				data: {keyword: putkeyword},
+				data: {keyword: putkeyword},				//putkeyword를 keyword란 이름으로 서블릿으로 전송
 				success:function (data, textStatus){	//전송과 응답이 성공했을 경우 작업 설정
+					console.log(data);
 					var jsoninfo = JSON.parse(data);	//서블릿에서 가져온 데이터를 받음
-					var bookinfo = "<ol id = 'asearch'>";
+					var bookinfo = "<ul class='list'>";
 					for(var i in jsoninfo.books) {
-						bookinfo += "<li><fieldset><p><h4>";
+						bookinfo += "<li><a href='javascript:searchInnerDetail('MONO1201539978', 'Y')' title='상세 바로가기'>";
 						bookinfo += jsoninfo.books[i].book_title + "/";
-						bookinfo += jsoninfo.books[i].author + "</h4></p><p>";
-						bookinfo += jsoninfo.books[i].publishing + " | ";
-						bookinfo += jsoninfo.books[i].room_name + " | ";
-						bookinfo += jsoninfo.books[i].book_sorting + " | ";
-						bookinfo += jsoninfo.books[i].shape + " | ";
-						bookinfo += jsoninfo.books[i].isbn + "</p></fieldset></li>";
-					} //end for
-					bookinfo += "</ol>"
-					$("#output").html(bookinfo);
+						bookinfo += jsoninfo.books[i].author + "<img src='./images/ko/ico/star_30.png' alt='인기도' /></a><ul><li>";
+						bookinfo += jsoninfo.books[i].publishing + "</li><li>";
+						bookinfo += jsoninfo.books[i].book_sorting + "</li><li>";
+						bookinfo += jsoninfo.books[i].room_name + "</li>";
+						bookinfo += "</ul><a href = './mylibrary.nal?isbn=" + jsoninfo.books[i].isbn + "' title='내서재담기'><img src='./images/ko/ico/briefIco1.png' alt='인기도' /></a></li>";
+					}
+					bookinfo += "</ul>" 
+						console.log(data);
+					$("#output").html(bookinfo);	//id output 에 bookinfo 를 html로 출력해줌
 				}, //end success function
 				error: function (data, textStatus) {
 					alert("에러가 발생했습니다.");
@@ -109,6 +128,10 @@
 		});//end showbookinfo function
 	});//end function
 </script>
+
+
+
+
 
 <script type="text/javascript">
 /* table 반응형처리 */
@@ -173,14 +196,20 @@ function searchCom()
     <h2 class="skip">탑메뉴</h2>
     <ul>
         
-            
-            
-                <li><a href="#firstVisit" rel="modal:open" title="처음방문이세요?">처음방문이세요?</a></li>
-                <li><a href="./login.do" title="로그인">로그인</a></li>
-                <li><a href="./selectMember.do" title="회원가입">회원가입</a></li>
-            
+            <c:choose>
+				<c:when test="${not empty sessionScope.sessionId}">
+                                <li class="new user"><b><%=member_name%></b>님 안녕하세요!</li> <!-- 로그인 시, 노출 -->
+                                <li><a href="./logout.do">로그아웃</a></li>
+                                <li><a href="/member/modyMember.do">마이페이지</a></li>
+                                 <li class="myLibrary"><a href="./mylist.nal" title="My Library" id="myLib">My Library</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="new"><a href="./selectMember.do" title="새창열기">처음 방문하셨나요?</a></li>
+		        	<li><a href="./login.do">로그인</a></li>
+				</c:otherwise>
+			</c:choose>
         
-        <li class="myLibrary"><a href="/mylist/usedLibList.do" title="My Library" id="myLib">My Library</a></li>
+        
     </ul>
 </nav>
 
@@ -282,7 +311,7 @@ function searchCom()
 
                 end : 다국어 page
  -->                
-             <!--    <input type = "text" id = "putkeyword" /> -->
+             
                 <input type="text" class="inputText" id="putkeyword" name="searchQuery" onfocus="setFocusIdForMultiLang('searchQuery');this.select();" title="검색 입력창"
                  autocomplete="off" placeholder="검색어를 입력해주세요"
                  >
@@ -405,8 +434,8 @@ function searchCom()
     var languageCode         = "";
     var fieldText            = "";
     var prevPubYearFieldText = "";
-    var totalSize            = "42";
-    var totalSizeByMenu      = "1";
+    var totalSize            = "";
+    var totalSizeByMenu      = "";
  	//소장도서관 패킷정보 추가, 20211125 KHJ
     var dpBranch       		 = "ALL";
     //학술지종류 정보 추가, 20211224 KHJ
@@ -530,7 +559,7 @@ function searchCom()
                     
                         
                         
-                            <li id="s_ALL" data-api="ALL" data-api-name="전체"><a href="javascript:changeDbDiv('ALL')" title="전체">전체<span>42</span></a></li>
+                            <li id="s_ALL" data-api="ALL" data-api-name="전체"><a href="javascript:changeDbDiv('ALL')" title="전체">전체<span></span></a></li>
                         
                     
                 
@@ -543,7 +572,7 @@ function searchCom()
                                 
                                 
                                 
-                                도서자료<span>1</span>
+                                도서자료<span></span>
                                 </a>
 
                                 <div class="thirdDepth">
@@ -558,7 +587,7 @@ function searchCom()
 				                                
 				                                
 				                                
-                                                일반도서<span>(1)</span>
+                                                일반도서<span>()</span>
                                                 </a></li>
                                            
                                                 <li id="s_EBOK" data-api="EBOK" data-api-name="E-BOOK">
@@ -568,7 +597,7 @@ function searchCom()
 				                                
 				                                
 				                                
-                                                E-BOOK<span>(0)</span>
+                                                E-BOOK<span>()</span>
                                                 </a></li>
                                            
                                                 <li id="s_OLDP" data-api="OLDP" data-api-name="고서">
@@ -578,7 +607,7 @@ function searchCom()
 				                                
 				                                
 				                                
-                                                고서<span>(0)</span>
+                                                고서<span>()</span>
                                                 </a></li>
                                            
                                                 <li id="s_PAMP" data-api="PAMP" data-api-name="세미나자료">
@@ -588,7 +617,7 @@ function searchCom()
 				                                
 				                                
 				                                
-                                                세미나자료<span>(0)</span>
+                                                세미나자료<span>()</span>
                                                 </a></li>
                                            
                                                 <li id="s_WNET" data-api="WNET" data-api-name="웹자료">
@@ -598,7 +627,7 @@ function searchCom()
 				                                
 				                                
 				                                
-                                                웹자료<span>(0)</span>
+                                                웹자료<span>()</span>
                                                 </a></li>
                                            
                                         </ol>
@@ -618,7 +647,7 @@ function searchCom()
                                 
                                 
                                 
-                                학위논문<span>0</span>
+                                학위논문<span></span>
                                 </a>
 
                                 <div class="thirdDepth">
@@ -633,7 +662,7 @@ function searchCom()
 				                                
 				                                
 				                                
-                                                학위논문<span>(15)</span>
+                                                학위논문<span></span>
                                                 </a></li>
                                            
                                         </ol>
@@ -653,7 +682,7 @@ function searchCom()
                                 
                                 
                                 
-                                연속간행물&middot;학술기사<span>0</span>
+                                연속간행물&middot;학술기사<span></span>
                                 </a>
 
                                 <div class="thirdDepth">
@@ -728,7 +757,7 @@ function searchCom()
                                 <a href="#" title="멀티미디어">
                                 
                                 
-                                멀티미디어<span>0</span>
+                                멀티미디어<span></span>
                                 </a>
 
                                 <div class="thirdDepth">
@@ -803,7 +832,7 @@ function searchCom()
                                 <a href="#" title="국회자료">
                                 
                                 
-                                국회자료<span>0</span>
+                                국회자료<span></span>
                                 </a>
 
                                 <div class="thirdDepth">
@@ -858,7 +887,7 @@ function searchCom()
                                 <a href="#" title="특화자료">
                                 
                                 
-                                특화자료<span>0</span>
+                                특화자료<span></span>
                                 </a>
 
                                 <div class="thirdDepth">
@@ -1023,7 +1052,7 @@ function searchCom()
 	    	
 	    
 
-        <p>검색결과 ( 1건 / 전체 <span class="count">42</span>건)</p>
+        <p>검색결과 <span class="count"></span></p>
     
 
 
@@ -1395,7 +1424,7 @@ function searchCom()
                     <div class="f-L">
                     
                     
-                        <a href="#" class="searchOption1" onclick="fn_myLibrary('list');" title="내서재담기">내서재담기</a>
+                        
                         
 	                        
 	                            
@@ -1446,38 +1475,38 @@ function searchCom()
                         
                     </div>
                 </div>
-                <div class="searchList">
+                <div class="searchList" id = "output">
                  
-                 <div id="output">
-                 <c:choose>
+                
+        <c:choose>
 			<c:when test="${(count == 0) && (infoArr==null)}">
 				<tr>
 					<td>책이 없습니다.</td>					
 				</tr>
 			</c:when>
+			
 			<c:when test="${(count == 0) && (infoArr != null)}">
-				<ol id = "asearch">
+				<ul class="list">
 				<c:forEach var="list" items="${infoArr}">
-					
-					<li><fieldset ><p><h4>
-						${list.book_title} / 
-				<%-- 		<td><a href="./BoardViewAction.do?articleno=${list.articleno}&pagenum=<%=pagenum%>">${list.title}</a></td> --%>
-						${list.author}</h4></p>
-						<p>${list.publishing} |
-						${list.room_name}</p></fieldset></li>
-					
-									
+					<li><a href='javascript:searchInnerDetail('MONO1201539978', 'Y')' title='상세 바로가기'>					
+						${list.book_title} / 				
+						${list.author}
+						<img src='./images/ko/ico/star_30.png' alt='인기도' /></a>
+						<ul>
+							<li>${list.publishing}</li>
+							<li>${list.book_sorting}</li>
+							<li>${list.room_name}</li>						
+						</ul>
+						<a href = './mylibrary.nal?isbn=${list.isbn}' title='내서재담기'>
+							<img src='./images/ko/ico/briefIco1.png' alt='인기도' />
+						</a>
+					</li>			
 				</c:forEach>
-				</ol>				
-			</c:when>
-			
-
-			
+				</ul>		
+			</c:when>		
 		</c:choose>
-                 
-                 </div>
-                 
-                 
+		
+		
                 </div>
                 
                 
@@ -2439,6 +2468,9 @@ function searchPcLoginForReservationProc(viewType){
 	}
 }
 </script>
+
+
+
 
 <script type="text/javascript" defer='defer'>
 	/* CLICKZONE SCRIPT V.V.4 *//*X*//* COPYRIGHT 2002-2020 BIZSPRING INC. *//*X*//* DO NOT MODIFY THIS SCRIPT. *//*X*/var _CZN="26";

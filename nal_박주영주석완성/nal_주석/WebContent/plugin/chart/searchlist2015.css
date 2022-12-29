@@ -1,0 +1,164 @@
+.blind {visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0;}
+.group:before, .group:after {content: ""; display: table;}
+.group:after {clear: both;}
+.group { zoom: 1;}
+
+.dp_none {display:none;}
+
+#search_graph {margin-bottom:20px;}
+#search_graph .search_close {width:30px;height:30px;float:right;background:url(/images/ko/chart/search_close.png) no-repeat;margin-top:4px; position: absolute; right: 10px; top: 10%;}
+#search_graph ul.tab { color:#777; height: 41px; min-height: 41px; }
+#search_graph ul.tab li {float:left;padding-right:4px; margin-top:10px; }
+#search_graph ul.tab li a {width:143px;height:31px;font-size:14px;font-weight:bold;text-align:center;line-height:31px;display:block;text-decoration:none;background:url(/images/ko/chart/search_tab_bg01.png) no-repeat;}
+#search_graph ul.tab li a.selected{text-decoration:none;color:#fff;background:url(/images/ko/chart/search_tab_bg02.png) no-repeat;cursor:pointer;}
+#search_graph ul.panel {position:relative;height:520px;/*clear:both;*/border:1px solid #5c9ca7;border-radius:5px;border-top-left-radius:0px;background-color:#F4F4F4;}
+#search_graph ul.panel .tab1 .sc_graph {position:absolute;width:100%;height:500px;border-radius:5px;border-top-left-radius:0px;margin-top:4px;.margin:-2px;}
+#search_graph ul.panel .tab1 .sc_graph .graph {margin:0px 4px 4px 4px;height:475px;text-align:center;}
+#search_graph ul.panel .tab1 .sc_graph .graph .graph_title {font-size:14px;font-weight:bold;color:#af4300;}
+#search_graph ul.panel .tab1 .sc_graph .graph .graph_text {font-size:12px;font-weight:bold;color:#444;}
+
+/* 목록보기 추가 */
+#search_graph ul.panel .search_cat {position:absolute;left:15px;top:15px;width:79px;height:23px;padding:0;}
+#search_graph ul.panel .search_cat .btn_cat_more {font-size:11px;color:#777;}
+#search_graph ul.panel .search_cat > a {display:block;background:url(/images/ko/chart/search_graph01_btn06.png) no-repeat;width:79px;height:23px;}
+#search_graph ul.panel .search_cat > a.view {display:block;background:url(/images/ko/chart/search_graph01_btn06_close.png) no-repeat;width:79px;height:23px;}
+#search_graph ul.panel .search_cat .more_cat_list {display:none;position:absolute;z-index:11000;width:150px;height:255px;left:0px;border:solid 1px #999;background:#fff;margin-top:2px;overflow:auto;padding:7px 15px 15px 15px;}
+#search_graph ul.panel .search_cat .more_cat_list li {display:block !important;}
+#search_graph ul.panel .search_cat .more_cat_list li label,
+#search_graph ul.panel .search_cat .more_cat_list li a {display:block !important;font-size:11px;color:#777;background:#fff;padding-top:1px;}
+#search_graph ul.panel .search_cat .more_cat_list li label {line-height:13px;}
+#search_graph ul.panel .search_cat .more_cat_list li input {margin-right: 10px;float:left;}
+
+#search_graph ul.panel .btn_view_large {position:absolute;right:100px;top:15px;width:69px;height:23px;background:url(/images/ko/chart/search_graph01_plus.png) no-repeat;font-size:11px;color:#777;}
+#search_graph ul.panel .btn_table {position:absolute;right:25px;top:15px;width:69px;height:23px;background:url(/images/ko/chart/search_graph01_btn02.png) no-repeat;font-size:11px;color:#777;}
+#search_graph ul.panel .btn_graph {position:absolute;right:25px;top:15px;width:69px;height:23px;background:url(/images/ko/chart/search_graph01_btn04.png) no-repeat;font-size:11px;color:#777;}
+/* #search_graph ul.panel .btn_table {position:absolute;right:15px;top:15px;width:69px;height:15px;margin-top:4px;} */
+/* #search_graph ul.panel .btn_graph {position:absolute;right:15px;top:15px;} */
+#search_graph ul.panel .sc_page {position:absolute;bottom:5px;width:100%;height:30px;}
+#search_graph ul.panel .sc_page .prevnext_page {width:300px;height:24px;margin:0 auto;background:#f4f4f4;padding:1px 10px;}
+#search_graph ul.panel .sc_page .prevnext_page .prev {float:left;width:12px;height:24px;background:url(/images/ko/chart/search_graph01_btn03_prev.png) no-repeat;}
+#search_graph ul.panel .sc_page .prevnext_page .next {float:right;width:12px;height:24px;background:url(/images/ko/chart/search_graph01_btn03_next.png) no-repeat;}
+#search_graph ul.panel .sc_page .prevnext_page .text {float:left;width:310px;color:#444;text-align:center;}
+#search_graph ul.panel .sc_page .prevnext_page .text a {display:inline-block; font-size:11px; color:#8B8B8B; background:url(/images/ko/chart/bg_page_line.gif) right 6px no-repeat; padding:0 12px 1px 7px;}
+#search_graph ul.panel .sc_page .prevnext_page .text a.selected {color:red; font-weight:bold;}
+#search_graph ul.panel .sc_page .prevnext_page .text a:hover,
+#search_graph ul.panel .sc_page .prevnext_page .text a:hover.selected {color:#333;}
+#search_graph ul.panel .sc_page .prevnext_page .text a.last_num {background:none; }
+#search_graph ul.panel .sc_page .prevnext_page .text a.last_num_selected {background:none; color:red; font-weight:bold;}
+
+#search_graph ul.panel .sc_graph_more {width:70px;height:23px;margin:15px auto 0;}
+#search_graph ul.panel .table_title {display:inline-block;margin:18px 20px 10px 20px;.margin-top:0px;}
+
+
+/* 탭_표로 보기 (연관어분포 + 연관어트랜드) */
+#graph_area {background:#ffffff;}
+
+
+/* 탭_표로 보기 (연관어분포 + 연관어트랜드) */  /*  테이블 테스트수정  */
+.table_box {background-color:#f4f4f4;}
+.search_table_01 table{ table-layout: fixed;  border-collapse: collapse; width: 100%;}
+.search_table_01 {height:403px;margin:50px 20px 0px 20px;.margin-top:25px; background-color:#f4f4f4;overflow:hidden;}
+.search_table_01 .tb_basic_01 {font-family:dotum Arial;font-size:12px;text-align:center;color:#666;}
+.search_table_01 .tb_basic_01 td{font-family:dotum Arial;font-size:12px;text-align:center;color:#666;}
+.search_table_01 .tb_basic_01 thead th {width:1000px;}
+/*.search_table_01 .tb_basic_01 tbody th, .search_table_01 .tb_basic_01 tbody td {width:1000px;}*/
+.search_table_01 .tb_basic_01 thead {margin-right:15px;}
+.search_table_01 .tb_basic_01 thead th {font-weight:bold;background:#f8f8f8;border-right:solid 1px #d8d8d8;border-top:solid 1px #d8d8d8;border-bottom:solid 1px #d8d8d8;}
+.search_table_01 .tb_basic_01 tbody {background-color:#fff;}
+.search_table_01 .tb_basic_01 tbody th {background:#fbfbfb;border-right:solid 1px #d8d8d8;border-bottom:solid 1px #d8d8d8;font-weight:normal;}
+.search_table_01 .tb_basic_01 tbody td {border-right:solid 1px #d8d8d8;border-bottom:solid 1px #d8d8d8;font-weight:normal;padding:10px 0px 7px 0px;}
+.search_table_01 .tb_basic_01 .text_red_b {color:#c80000;font-weight:bold;}
+.search_table_01 img {margin-right:7px;}
+.search_table_01 .text_bg01 {background:#f8f8f8;}
+.search_table_01 .tb_basic_01 .bl_none {border-left:none;}
+.search_table_01 .tb_basic_01 .br_none {border-right:none;}
+
+
+/* 탭_표로 보기 (연구자인물 + 연구자단체) */
+#search_graph ul.panel .search_table_02 {overflow:auto;height:403px;margin:0px 20px 0px 20px;.margin-top:0px;}
+#search_graph ul.panel .search_table_02 .tb_basic_02 {table-layout:fixed;font-family:돋움;font-size:12px;text-align:center;}
+#search_graph ul.panel .search_table_02 .tb_basic_02 th {font-weight:normal;color:#666;padding:5px 0px 5px 0px;text-align:left;}
+#search_graph ul.panel .search_table_02 .tb_basic_02 td {color:#666;border:solid 1px #d8d8d8;padding:5px 0px 2px 0px;}
+#search_graph ul.panel .search_table_02 img {margin-right:7px;}
+#search_graph ul.panel .search_table_02 .text_bg01 {background:#f8f8f8;}
+#search_graph ul.panel .search_table_02 .tb_basic_02 .bl_none {border-left:none;}
+#search_graph ul.panel .search_table_02 .tb_basic_02 .br_none {border-right:none;}
+
+#search_graph ul.panel .search_table_02 .tb_basic_03 {table-layout:fixed;font-family:돋움;font-size:12px;text-align:left;}
+#search_graph ul.panel .search_table_02 .tb_basic_03 th {font-weight:normal;color:#666;padding:5px 0px 5px 0px;text-align:left;}
+#search_graph ul.panel .search_table_02 .tb_basic_03 td {color:#666;border:solid 1px #d8d8d8;padding:5px 0px 2px 20px;}
+#search_graph ul.panel .search_table_02 .tb_basic_03 .bl_none {border-left:none;}
+#search_graph ul.panel .search_table_02 .tb_basic_03 .br_none {border-right:none;}
+
+
+/* 탭_연구자인물 그래프 */
+#search_graph ul.panel .tab3 .sc_graph {position:absolute;width:100%;height:455px;border-radius:5px;border-top-left-radius:0px;background:url(/images/ko/chart/search_graph03_bg01.png) no-repeat center 45px;margin-top:4px;.margin:-2px;}
+#search_graph ul.panel .tab3 .sc_graph .graph {margin:0px 4px 4px 4px;height:455px;text-align:center;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle_01 {display:inline-block;width:64px;height:64px;background:url(/images/ko/chart/search_graph03_icon01.png) no-repeat;text-align:center;color:#fff;font-weight:bold;line-height:64px;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle {display:inline-block;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle .circle_02 {width:51px;height:51px;background:url(/images/ko/chart/search_graph03_icon02.png) no-repeat;margin:0 auto;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle .circle_02_txt {margin-top:3px;color:#00aab8;font-weight:bold;line-height:14px;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle .circle_03 {width:43px;height:43px;background:url(/images/ko/chart/search_graph03_icon03.png) no-repeat;margin:0 auto;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle .circle_03_txt {margin-top:3px;color:#07a98f;font-weight:bold;line-height:14px;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle .circle_04 {width:38px;height:38px;background:url(/images/ko/chart/search_graph03_icon04.png) no-repeat;margin:0 auto;}
+#search_graph ul.panel .tab3 .sc_graph .graph .circle .circle_04_txt {margin-top:3px;color:#07a98f;line-height:14px;}
+
+
+/* 탭_연구자단체 그래프 */
+#search_graph ul.panel .tab4 .sc_graph {position:absolute;width:100%;height:455px;border-radius:5px;border-top-left-radius:0px;background:url(/images/ko/chart/search_graph03_bg01.png) no-repeat center 45px;margin-top:4px;.margin:-2px;}
+#search_graph ul.panel .tab4 .sc_graph .graph {margin:0px 4px 4px 4px;height:455px;text-align:center;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle_01 {display:inline-block;width:64px;height:64px;background:url(/images/ko/chart/search_graph04_icon01.png) no-repeat;text-align:center;color:#fff;font-weight:bold;line-height:64px;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle {display:inline-block;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle .circle_02 {width:51px;height:51px;background:url(/images/ko/chart/search_graph04_icon02.png) no-repeat;margin:0 auto;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle .circle_02_txt {margin-top:3px;color:#9d23a4;font-weight:bold;line-height:14px;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle .circle_03 {width:43px;height:43px;background:url(/images/ko/chart/search_graph04_icon03.png) no-repeat;margin:0 auto;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle .circle_03_txt {margin-top:3px;color:#9850c9;line-height:14px;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle .circle_04 {width:38px;height:38px;background:url(/images/ko/chart/search_graph04_icon04.png) no-repeat;margin:0 auto;}
+#search_graph ul.panel .tab4 .sc_graph .graph .circle .circle_04_txt {margin-top:3px;color:#6979cb;line-height:14px;}
+
+
+/* 연관정보 */
+#search_graph .sc_graph_btn01 {margin-left:5px;}
+#search_graph .title h4 {float:left; height:23px;background:url(/images/ko/chart/blt_green_title.gif) 0 5px no-repeat;font-weight:bold;padding:0px 10px 0px 18px;}
+#search_graph #panel {position:relative;height:0px;z-index:10;overflow:hidden;margin:8px 12px 0 12px;}
+#search_graph #panel .data_graph {border:1px solid #d6d6d6;background:#f3f1f2;}
+#search_graph #panel .data_graph .btn_view_large {position:absolute;right:15px;top:15px;width:64px;height:23px;background:url(/images/ko/chart/search_graph01_btn01.png) no-repeat;font-size:11px;padding:2px 5px 0 0px;color:#777; text-align:right}
+
+#search_graph #panel .data_graph .sc_graph {height:481px;background:url(/images/ko/chart/search_graph05_bg01.png) no-repeat center;}
+#search_graph #panel .data_graph .sc_graph .circle_01 {display:table;width:83px;height:83px;background:url(/images/ko/chart/search_graph05_icon09.png) no-repeat;text-align:center;font-size:11px;color:#666;display:table-cell;vertical-align:middle;line-height:15px;}
+#search_graph #panel .data_graph .sc_graph .circle {display:inline-block;}
+#search_graph #panel .data_graph .sc_graph .circle_02_01 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon01.png) no-repeat;margin:0 auto;font-size:11px;}
+#search_graph #panel .data_graph .sc_graph .circle_02_02 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon05.png) no-repeat;margin:0 auto;text-align:center;padding-top:44px;font-size:11px;color:#cd5fd3;}
+#search_graph #panel .data_graph .sc_graph .circle_03_01 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon02.png) no-repeat;margin:0 auto;font-size:11px;}
+#search_graph #panel .data_graph .sc_graph .circle_03_02 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon06.png) no-repeat;margin:0 auto;text-align:center;padding-top:44px;font-size:11px;color:#8e7bdb;}
+#search_graph #panel .data_graph .sc_graph .circle_04_01 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon03.png) no-repeat;margin:0 auto;font-size:11px;}
+#search_graph #panel .data_graph .sc_graph .circle_04_02 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon07.png) no-repeat;margin:0 auto;text-align:center;padding-top:44px;font-size:11px;color:#85a728;}
+#search_graph #panel .data_graph .sc_graph .circle_05_01 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon04.png) no-repeat;margin:0 auto;font-size:11px;}
+#search_graph #panel .data_graph .sc_graph .circle_05_02 {float:left;width:73px;height:73px;background:url(/images/ko/chart/search_graph05_icon08.png) no-repeat;margin:0 auto;text-align:center;padding-top:44px;font-size:11px;color:#449cba;}
+#search_graph #panel .data_graph .sc_graph .circle_06 {display:inline-block;color:#fff;background:#d67bdb;font-size:11px;border-radius:15px;padding:2px 10px 0px 10px;}
+#search_graph #panel .data_graph .sc_graph .circle_07 {display:inline-block;color:#fff;background:#8e7bdb;font-size:11px;border-radius:15px;padding:2px 10px 0px 10px;}
+#search_graph #panel .data_graph .sc_graph .circle_08 {display:inline-block;color:#fff;background:#a7c639;font-size:11px;border-radius:15px;padding:2px 10px 0px 10px;}
+#search_graph #panel .data_graph .sc_graph .circle_09 {display:inline-block;color:#fff;background:#7bc3db;font-size:11px;border-radius:15px;padding:2px 10px 0px 10px;}
+#search_graph #panel .data_graph .sc_graph .circle_10 {display:inline-block;color:#fff;border:solid 1px #d67bdb;background:#fff;font-size:11px;border-radius:15px;padding:0px 10px 0px 10px;color:#aa8aab;}
+#search_graph #panel .data_graph .sc_graph .circle_11 {display:inline-block;color:#fff;border:solid 1px #8e7bdb;background:#fff;font-size:11px;border-radius:15px;padding:0px 10px 0px 10px;color:#9387c2;}
+#search_graph #panel .data_graph .sc_graph .circle_12 {display:inline-block;color:#fff;border:solid 1px #a7c639;background:#fff;font-size:11px;border-radius:15px;padding:0px 10px 0px 10px;color:#98a46d;}
+#search_graph #panel .data_graph .sc_graph .circle_13 {display:inline-block;color:#fff;border:solid 1px #7bc3db;background:#fff;font-size:11px;border-radius:15px;padding:0px 10px 0px 10px;color:#7797a2;}
+#search_graph .panel_button {display:inline-block;}
+
+
+.white_content {display:none;position:absolute;top:5%;width:100%;height:800px;left:0;border:1px solid #d7d7d7;background:#f3f1f2;border:1px solid #d6d6d6;z-index:1002;overflow:auto;border-radius:10px;}
+.tx_btn_close {float:right;margin:20px 20px 0 0;top:20px;width:22px;height:22px;background:url(/images/ko/chart/search_close.png) no-repeat;}
+
+.btn_viewmap {display:block; position:relative;border-radius:7px;margin-bottom:15px;}
+.btn_viewmap .viewmap_title {position:absolute;left:-1px;top:0px;margin:0 auto;width:94px;z-index:100;}
+
+
+/* 크게보기 창 */
+.view_large {position:fixed;z-index:100000;left:0;top:0;right:0;bottom:0;display:none;}
+.view_large .back_screen {position:absolute;left:0;top:0;right:0;bottom:0;background:#000;opacity:0.65;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";}
+.view_large .win_graph {position:absolute;left:20px;top:20px;right:20px;bottom:20px;background:#fff;border-radius:20px;box-shadow: rgba(0,0,0,.3) 5px 5px 5px;}
+.view_large .win_graph .btn_large_close {float:right;margin:20px 20px 0 0;}
+.view_large .win_graph .large_graph {position:absolute;left:20px;top:50px;right:20px;bottom:20px;}
+
+
+

@@ -1,3 +1,4 @@
+ /* 작성자 배재연 */
 package usermadang.board.controller;
 
 import java.io.IOException;

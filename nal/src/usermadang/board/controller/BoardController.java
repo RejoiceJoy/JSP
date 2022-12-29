@@ -1,3 +1,4 @@
+ /* 작성자 배재연 */
 package usermadang.board.controller;
 
 import java.io.IOException;
@@ -150,18 +151,36 @@ public class BoardController extends HttpServlet {
 		int articleno = Integer.parseInt(request.getParameter("articleno"));
 		int pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
 		
-//		String searchKeyCode = request.getParameter("searchKeyCode");
-//		String searchKeyWord = request.getParameter("searchKeyWord");
+		String searchKeyCode = request.getParameter("searchKeyCode");
+		String searchKeyWord = request.getParameter("searchKeyWord");
 		
 		FreeboardVO board = new FreeboardVO();
+		FreeboardVO beforeboard = new FreeboardVO();
+		FreeboardVO afterboard = new FreeboardVO();
 		board = dao.getArticleByArticleno(articleno, pageIndex);
-
+		int beforeArticleno = dao.getBeforeArticleno(articleno, searchKeyCode, searchKeyWord);
+		if(beforeArticleno != 0) {
+			beforeboard = dao.getArticleByArticleno(beforeArticleno, pageIndex);
+		}
+		int afterArticleno = dao.getAfterArticleno(articleno, searchKeyCode, searchKeyWord);
+		if(afterArticleno != 0) {
+			afterboard = dao.getArticleByArticleno(afterArticleno, pageIndex);
+		}
+		
 //		dao.updateHit(articleno);
 		
 		request.setAttribute("articleno", articleno);		 
    		request.setAttribute("pageIndex", pageIndex); 
    		request.setAttribute("FreeBoardVO", board);   
-//   		request.setAttribute("searchKeyCode", searchKeyCode);
+   		request.setAttribute("beforeno", beforeArticleno);
+   		request.setAttribute("afterno", afterArticleno);
+   		if(beforeArticleno != 0) {
+   			request.setAttribute("beforeboard", beforeboard); 
+		}
+		if(afterArticleno != 0) {
+			request.setAttribute("afterboard", afterboard); 
+		}
+//   	request.setAttribute("searchKeyCode", searchKeyCode);
 //		request.setAttribute("searchKeyWord", searchKeyWord);
 	}
 	//선택된 글 내용 수정하기
